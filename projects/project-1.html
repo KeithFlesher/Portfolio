@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" data-qb-installed="true"><head>
   
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3DFWXLJSWL"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-3DFWXLJSWL"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -12,12 +11,12 @@
   gtag('config', 'G-3DFWXLJSWL');
 </script>
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FRC Robotics| Keith Flesher</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&amp;display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #071019;
@@ -52,798 +51,915 @@
       min-height: 100vh;
     }
 
-    a { color: inherit; text-decoration: none; }
-
-    .site-shell {
-      width: min(100% - 28px, var(--max-width));
-      margin: 14px auto;
-      border: 1px solid var(--line);
-      min-height: calc(100vh - 28px);
-      background-color: rgba(4, 12, 19, 0.82);
-      background-image:
-        linear-gradient(rgba(102,177,218,.12) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(102,177,218,.12) 1px, transparent 1px),
-        linear-gradient(rgba(102,177,218,.055) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(102,177,218,.055) 1px, transparent 1px);
-      background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
-      position: relative;
-      overflow: hidden;
+    :root {
+      --bg: #090d14;
+      --panel: #101722;
+      --panel-light: #151f2d;
+      --text: #f3f5f7;
+      --muted: #aab5c4;
+      --line: rgba(211, 224, 240, .14);
+      --accent: #ff5a36;
+      --accent-soft: rgba(255, 90, 54, .1);
+      --max: 1280px;
     }
 
-    .site-shell::before,
-    .site-shell::after {
-      content: "";
-      position: fixed;
-      z-index: -1;
-      width: 40vw;
-      height: 40vw;
-      border-radius: 50%;
-      filter: blur(110px);
-      opacity: .13;
-      background: #2a99ff;
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
     }
-
-    .site-shell::before { left: -10vw; top: -14vw; }
-    .site-shell::after { right: -12vw; bottom: -18vw; }
-
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    button, input { font: inherit; }
+    .page-shell { overflow: hidden; }
     .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      min-height: 72px;
-      padding: 14px 22px;
+      position: sticky; top: 0; z-index: 20;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; padding: .85rem max(1.25rem, calc((100vw - var(--max)) / 2));
       border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(12px);
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(4, 12, 19, .88);
+      background: rgba(9, 13, 20, .9); backdrop-filter: blur(14px);
     }
-
-    .brand {
-      font-weight: 800;
-      letter-spacing: .16em;
-      text-transform: uppercase;
+    .brand { font-size: .82rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .brand span { color: var(--accent); }
+    .nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .3rem; }
+    .nav a {
+      color: var(--muted); text-decoration: none; font-size: .78rem;
+      padding: .45rem .65rem; border-radius: 6px;
     }
-
-    .topnav {
-      display: flex;
-      gap: 18px;
-      color: var(--muted);
-      font-size: .92rem;
-    }
-
-    .topnav a:hover { color: var(--text); }
-
-    .editor-toggle {
-      border: 1px solid var(--line);
-      background: rgba(62,159,255,.08);
-      color: var(--text);
-      padding: 9px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .page {
-      display: grid;
-      grid-template-columns: 230px minmax(0, 1fr);
-    }
-
-    
-
-    .project-nav {
-      display: grid;
-      gap: 8px;
-      margin-bottom: 42px;
-    }
-
-    .project-nav a {
-      padding: 10px 11px;
-      border-left: 2px solid transparent;
-      color: var(--muted);
-      font-size: .92rem;
-    }
-
-    .project-nav a:hover,
-    .project-nav a.active {
-      color: var(--accent);
-      border-left-color: var(--accent);
-      background: rgba(62, 159, 255, .07);
-    }
-
-    .drawing-block {
-      margin-top: auto;
-      border: 1px solid var(--line);
-      padding: 12px;
-      font-family: "Courier New", monospace;
-      font-size: .72rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    main { min-width: 0; }
-
+    .nav a:hover { color: var(--text); background: var(--panel-light); }
+    .hero, .section, .category-band, .footer { width: min(var(--max), calc(100% - 3rem)); margin-inline: auto; }
     .hero {
-      display: grid;
-      grid-template-columns: .9fr 1.35fr;
-      gap: 28px;
-      padding: 48px 42px 36px;
-      min-height: 560px;
-      border-bottom: 1px solid var(--line);
-      align-items: center;
-      position: relative;
+      min-height: 76vh; display: grid; grid-template-columns: 1.05fr .95fr;
+      align-items: center; gap: clamp(2rem, 5vw, 5rem); padding-block: 6rem 5rem;
     }
-
-    .eyebrow {
-      color: var(--accent);
-      font-family: "Courier New", monospace;
-      text-transform: uppercase;
-      letter-spacing: .14em;
-      margin-bottom: 12px;
+    .eyebrow, .section-kicker {
+      color: var(--accent); font-size: .76rem; font-weight: 800;
+      letter-spacing: .17em; text-transform: uppercase;
     }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(2rem, 4vw, 4.5rem);
-      line-height: .85;
-      letter-spacing: .025em;
-      text-transform: uppercase;
-      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-      font-weight: 500;
-    }
-
-    .subtitle {
-      margin: 18px 0 20px;
-      font-size: 1.25rem;
-      color: var(--accent);
-      font-family: "Courier New", monospace;
-    }
-
-    .lead {
-      color: var(--muted);
-      max-width: 62ch;
-      line-height: 1.7;
-    }
-
-    .meta {
-      margin-top: 24px;
-      display: grid;
-      gap: 7px;
-      color: #c9d8df;
-      font-size: .92rem;
-    }
-
-    .hero-visual {
-      min-height: 450px;
-      position: relative;
-      display: grid;
-      place-items: center;
-    }
-
-    .hero-visual::after {
-      content: "EXPLODED ASSEMBLY / REV D";
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      color: var(--muted);
-      font-size: .73rem;
-      font-family: "Courier New", monospace;
-      letter-spacing: .12em;
-    }
-
-    .section {
-      display: block;
-      border-bottom: 1px solid var(--line);
-      min-height: 420px;
-      position: relative;
-    }
-
-    .section-index {
-      padding: 22px 30px 18px;
-      border-right: 0;
-      border-bottom: 1px solid var(--line);
-      position: relative;
-      display: grid;
-      grid-template-columns: 64px minmax(180px, 300px) minmax(0, 1fr);
-      gap: 18px;
-      align-items: center;
-      background: rgba(5, 17, 27, .72);
-    }
-
-    .section-index .number {
-      font-size: 2.15rem;
-      color: var(--accent);
-      font-family: "Courier New", monospace;
-    }
-
-    
-.section-index h2 {
-    margin: 0;
-    padding-left: 16px;
-    border-left: 6px solid #ff6749;
-    font-size: 1.15rem;
-    text-transform: uppercase;
-    letter-spacing: .045em;
-    font-family: "Courier New", monospace;
-
-    white-space: nowrap;
-    min-width: max-content;
-}
-
-
-    .section-index p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.55;
-      font-size: .92rem;
-      max-width: 64ch;
-    }
-
-    .flow-line { display: none; }
-
-    .section-content {
-      padding: 30px;
-      display: grid;
-      gap: 24px;
-      align-content: center;
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 24px;
-      align-items: center;
-    }
-
-    .three-col {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .copy h3 {
-      margin: 0 0 10px;
-      font-family: "Courier New", monospace;
-      text-transform: uppercase;
-      color: var(--text);
-    }
-
-    .copy p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .paper-note {
-      background: var(--paper);
-      color: #20242a;
-      padding: 18px 18px 22px;
-      box-shadow: 0 18px 42px rgba(0,0,0,.34);
-      transform: rotate(var(--rotation, -1deg));
-      position: relative;
-      font-family: "Patrick Hand", "Segoe Print", cursive;
-      font-size: 1.08rem;
-      letter-spacing: .01em;
-    }
-
-    .paper-note h3,
-    .paper-note p,
-    .paper-note ul,
-    .paper-note li {
-      color: #20242a !important;
-      opacity: 1 !important;
-    }
-
-    .paper-note h3 {
-      margin-top: 0;
-      font-size: 1.25rem;
-      letter-spacing: .035em;
-    }
-
-    .paper-note ul {
-      margin-bottom: 0;
-      padding-left: 1.2rem;
-      line-height: 1.45;
-    }
-
+    h1 { font-size: clamp(3.2rem, 7vw, 6.6rem); line-height: .98; letter-spacing: -.065em; margin: 1rem 0; }
+    .subtitle { color: #d3dbe6; font-size: clamp(1rem, 1.6vw, 1.25rem); margin-bottom: 1.4rem; }
+    .lead { color: var(--muted); max-width: 670px; font-size: 1.05rem; }
+    .meta-list { display: grid; gap: .7rem; margin-top: 1.8rem; }
+    .meta-list div { padding-left: 1rem; border-left: 2px solid var(--accent); color: #d8e0e9; font-size: .86rem; }
+    .hero-visual { padding: 1.3rem; border: 1px solid var(--line); background: linear-gradient(135deg, rgba(255,90,54,.07), transparent 60%); border-radius: 18px; }
     .photo-card {
-      --rotation: 0deg;
-      --scale: 1;
-      position: relative;
-      transform: rotate(var(--rotation)) scale(var(--scale));
-      transform-origin: center;
-      transition: transform .18s ease, box-shadow .18s ease;
-      background: #d7d7d2;
-      color: #20252a;
-      padding: 10px 10px 28px;
-      box-shadow: 0 18px 45px rgba(0,0,0,.42);
-      max-width: 100%;
-      isolation: isolate;
+      position: relative; min-width: 0; margin: 0; padding: .8rem;
+      color: #1b2430; background: #f1f0e9; border-radius: 3px;
+      transform: rotate(var(--rotation, 0deg)); box-shadow: 0 18px 45px rgba(0,0,0,.25);
+      transition: transform .18s ease, outline .18s ease;
     }
+    .photo-card img { width: 100%; aspect-ratio: var(--ratio, 4 / 3); object-fit: cover; background: #d7dce2; border-radius: 2px; }
+    .photo-card figcaption { padding: .75rem .25rem .2rem; color: #283341; font-size: .8rem; line-height: 1.4; }
+    .tape { position: absolute; z-index: 2; width: 60px; height: 18px; background: rgba(255, 90, 54, .65); box-shadow: 0 2px 4px rgba(0,0,0,.08); }
+    .tape.tl { top: -7px; left: 18px; transform: rotate(-13deg); }
+    .tape.tr { top: -7px; right: 18px; transform: rotate(12deg); }
+    .tape.bl { bottom: 32px; left: 18px; transform: rotate(10deg); }
+    .tape.br { bottom: 32px; right: 18px; transform: rotate(-11deg); }
+    .category-band { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; padding: 1rem 0 5rem; }
+    .category-card { padding: 1.5rem; border: 1px solid var(--line); background: var(--panel); border-radius: 12px; }
+    .category-card .tag { width: 34px; height: 3px; margin-bottom: 1rem; background: var(--accent); }
+    .category-card h3 { margin: 0 0 .4rem; font-size: 1.1rem; }
+    .category-card p { color: var(--muted); margin: 0; font-size: .9rem; }
 
-    .photo-card:hover {
-      --scale: 1.015;
-      z-index: 4;
-      box-shadow: 0 28px 65px rgba(0,0,0,.54);
+    .section { position: relative; padding-block: 5.5rem; border-top: 1px solid var(--line); }
+    .section-heading { display: grid; grid-template-columns: minmax(180px, .65fr) 1.35fr; gap: 2rem; margin-bottom: 2.5rem; align-items: start; }
+    .section-heading h2 { font-size: clamp(2rem, 4vw, 3.6rem); line-height: 1.05; letter-spacing: -.045em; margin: .35rem 0; }
+    .section-heading p { max-width: 750px; color: var(--muted); margin: .35rem 0 0; }
+    .section-content { min-width: 0; }
+    .metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; margin-bottom: 2rem; }
+    .metric { padding: 1.1rem; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; }
+    .metric span, .spec span { display: block; color: var(--muted); font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; }
+    .metric strong { display: block; margin-top: .4rem; font-size: .95rem; }
+    .three-col { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; align-items: start; margin: 2.5rem 0; }
+    .two-col { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(1.5rem, 4vw, 4rem); align-items: start; }
+    .split { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(1.5rem, 4vw, 4rem); align-items: start; }
+    .copy h3, .paper-note h3 { font-size: clamp(1.35rem, 2vw, 2rem); line-height: 1.2; margin: 0 0 1rem; }
+    .copy p { color: var(--muted); margin: 0 0 1rem; }
+    .paper-note { padding: 1.7rem; color: #dce3eb; background: #f1f0e9; color: #273240; border-radius: 3px; transform: rotate(var(--rotation, 0deg)); box-shadow: 0 15px 35px rgba(0,0,0,.18); }
+    .paper-note h3 { color: #1b2532; }
+    .paper-note ul { margin: 0; padding-left: 1.2rem; }
+    .paper-note li { margin: .55rem 0; }
+    .process-list { display: grid; gap: .7rem; }
+    .process-step, .tuning-card { border: 1px solid var(--line); background: var(--panel); padding: 1.2rem; border-radius: 10px; }
+    .process-step strong, .step-label { display: block; color: var(--accent); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; margin-bottom: .35rem; }
+    .process-step span { color: var(--muted); font-size: .88rem; }
+    .diagram-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 2rem; align-items: center; margin-top: 3rem; }
+    .tuning-story { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 2.5rem 0; }
+    .tuning-card h3 { font-size: 1.15rem; margin: .2rem 0 .5rem; }
+    .tuning-card p { color: var(--muted); margin: 0; font-size: .9rem; }
+    .tuning-evidence { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
+    .quote-block { margin-top: 2rem; border-left: 3px solid var(--accent); padding: 1.2rem 1.4rem; color: #d8e0e9; background: var(--accent-soft); }
+    .final-product { display: grid; grid-template-columns: 1.05fr .95fr; gap: 3rem; align-items: center; }
+    .spec-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: .8rem; }
+    .spec { border: 1px solid var(--line); background: var(--panel); border-radius: 9px; padding: 1rem; }
+    .spec strong { display: block; margin-top: .3rem; font-size: .95rem; }
+    .footer { padding: 3rem 0; color: var(--muted); border-top: 1px solid var(--line); text-align: center; font-size: .75rem; letter-spacing: .16em; }
+
+    /* Four-season story: each year grows as experience and responsibility grow. */
+    .frc-years { width: min(1400px, calc(100% - 3rem)); margin-inline: auto; }
+    .frc-year { border-top: 1px solid var(--line); margin-inline: auto; }
+    .frc-year-inner { width: 100%; margin-inline: auto; }
+    .frc-year-1 { padding: 4rem 9rem; }
+    .frc-year-2 { padding: 5rem 7rem; }
+    .frc-year-3 { padding: 6rem 5rem; }
+    .frc-year-4 { padding: 8rem 3rem; }
+    .frc-year-1 .frc-year-inner { max-width: 850px; }
+    .frc-year-2 .frc-year-inner { max-width: 1000px; }
+    .frc-year-3 .frc-year-inner { max-width: 1150px; }
+    .frc-year-4 .frc-year-inner { max-width: 1320px; }
+    .year-label { color: var(--accent); font-size: .78rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    .year-title { font-size: clamp(2rem, 4vw, 3.8rem); letter-spacing: -.05em; line-height: 1.05; margin: .5rem 0 1rem; }
+    .year-intro { max-width: 800px; color: var(--muted); font-size: 1.02rem; }
+    .frc-gallery { display: grid; gap: 2rem; align-items: start; margin: 2.5rem 0 1rem; }
+    .frc-gallery-large { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .frc-gallery-medium { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .frc-gallery-small { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 850px; }
+    .frc-gallery .photo-card { width: 100%; }
+    .year-detail { display: grid; grid-template-columns: 1fr .8fr; gap: 2rem; align-items: start; margin-top: 2rem; }
+    .world-championship { margin-top: 4rem; padding: clamp(1.25rem, 3vw, 2.5rem); border: 1px solid rgba(255,90,54,.35); border-radius: 16px; background: rgba(255,90,54,.045); }
+    .world-championship__heading { max-width: 800px; margin-bottom: 1.5rem; }
+    .world-championship__heading h3 { color: var(--accent); font-size: clamp(1.6rem, 3vw, 2.5rem); line-height: 1.15; margin: .6rem 0; }
+    .world-championship__heading p { color: var(--muted); }
+    .frc-fab-note { max-width: 850px; margin: 2.5rem auto 0; padding: 1.5rem; border-left: 3px solid var(--accent); background: rgba(255,255,255,.035); color: var(--muted); }
+    .frc-fab-note strong { color: var(--accent); }
+    .editor-toggle {
+      position: fixed; z-index: 40; right: 1rem; bottom: 1rem; border: 0; border-radius: 999px;
+      padding: .85rem 1.1rem; color: white; background: var(--accent); font-weight: 800; cursor: pointer;
+      box-shadow: 0 8px 24px rgba(0,0,0,.35);
     }
-
-    .photo-card img {
-      display: block;
-      width: 100%;
-      aspect-ratio: var(--ratio, 4 / 3);
-      object-fit: cover;
-      background: linear-gradient(135deg, #162633, #27485b);
-      border: 1px solid rgba(20,35,45,.25);
-    }
-
-    .photo-card figcaption {
-      margin-top: 10px;
-      text-align: center;
-      font-family: "Courier New", monospace;
-      font-size: .82rem;
-      letter-spacing: .01em;
-    }
-
-    .tape {
-      display: none;
-      position: absolute;
-      width: 76px;
-      height: 25px;
-      background:
-        linear-gradient(90deg, rgba(255,255,255,.08), transparent 16%, transparent 84%, rgba(0,0,0,.06)),
-        var(--tape);
-      box-shadow: 0 2px 5px rgba(0,0,0,.18);
-      opacity: .9;
-      z-index: 5;
-      clip-path: polygon(2% 15%, 98% 0, 100% 84%, 0 100%);
-      pointer-events: none;
-    }
-
-    .photo-card.tape-tl .tape.tl,
-    .photo-card.tape-tr .tape.tr,
-    .photo-card.tape-bl .tape.bl,
-    .photo-card.tape-br .tape.br { display: block; }
-
-    .tape.tl { top: -8px; left: -24px; transform: rotate(-34deg); }
-    .tape.tr { top: -8px; right: -24px; transform: rotate(34deg); }
-    .tape.bl { bottom: -7px; left: -24px; transform: rotate(31deg); }
-    .tape.br { bottom: -7px; right: -24px; transform: rotate(-31deg); }
-
-    .blueprint-frame {
-      border: 1px solid rgba(78, 164, 255, .72);
-      padding: 12px;
-      position: relative;
-      background: rgba(7, 18, 28, .72);
-      box-shadow: inset 0 0 0 4px rgba(62,159,255,.03);
-    }
-
-    .blueprint-frame::before,
-    .blueprint-frame::after {
-      content: "";
-      position: absolute;
-      width: 24px;
-      height: 24px;
-      border-color: var(--accent);
-    }
-
-    .blueprint-frame::before {
-      top: 5px;
-      left: 5px;
-      border-top: 2px solid;
-      border-left: 2px solid;
-    }
-
-    .blueprint-frame::after {
-      bottom: 5px;
-      right: 5px;
-      border-bottom: 2px solid;
-      border-right: 2px solid;
-    }
-
-    .iteration-strip {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
-      align-items: center;
-    }
-
-    .iteration-step { position: relative; }
-
-    .iteration-step:not(:last-child)::after {
-      content: "→";
-      position: absolute;
-      right: -16px;
-      top: 44%;
-      color: var(--text);
-      font-size: 1.65rem;
-      z-index: 10;
-    }
-
-    .callout {
-      color: var(--accent);
-      font-family: "Courier New", monospace;
-      font-size: .82rem;
-      margin-top: 10px;
-    }
-
-    .final-product {
-      display: grid;
-      grid-template-columns: 1.4fr .75fr;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .final-visual {
-      min-height: 410px;
-      display: grid;
-      place-items: center;
-      position: relative;
-    }
-
-    .spec-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .spec {
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 12px;
-    }
-
-    .spec span {
-      display: block;
-      color: var(--muted);
-      font-size: .75rem;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      margin-bottom: 3px;
-    }
-
-    .spec strong { font-size: 1.25rem; }
-
-    .footer {
-      padding: 30px;
-      color: var(--muted);
-      font-family: "Courier New", monospace;
-      border-top: 1px solid var(--line);
-      text-align: center;
-    }
-
-    /* Editor panel: lets you click an image, rotate it, and toggle tape corners. */
     .editor-panel {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      width: 280px;
-      padding: 16px;
-      background: rgba(5, 14, 22, .96);
-      border: 1px solid rgba(62,159,255,.55);
-      box-shadow: 0 18px 55px rgba(0,0,0,.55);
-      z-index: 100;
-      display: none;
+      position: fixed; z-index: 39; right: 1rem; bottom: 5rem; width: min(330px, calc(100vw - 2rem));
+      padding: 1.2rem; border: 1px solid var(--line); border-radius: 12px; background: #111925;
+      box-shadow: 0 15px 50px rgba(0,0,0,.4); display: none;
     }
-
     body.editor-open .editor-panel { display: block; }
+    .editor-panel h3 { margin: 0 0 .5rem; }
+    .editor-panel label { display: block; color: var(--muted); font-size: .85rem; margin: 1rem 0 .3rem; }
+    .editor-panel input[type="range"] { width: 100%; accent-color: var(--accent); }
+    .corner-controls { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+    .corner-controls button, .reset-button { padding: .55rem; color: var(--text); border: 1px solid var(--line); border-radius: 6px; background: var(--panel-light); cursor: pointer; }
+    .corner-controls button.active { border-color: var(--accent); color: var(--accent); }
+    .editor-help { color: var(--muted); font-size: .76rem; margin-top: .8rem; }
     body.editor-open .photo-card { cursor: pointer; }
-    body.editor-open .photo-card.selected { outline: 2px solid var(--accent); outline-offset: 5px; }
+    .photo-card.selected { outline: 3px solid var(--accent); outline-offset: 4px; }
 
-    .editor-panel h3 {
-      margin: 0 0 12px;
-      font-family: "Courier New", monospace;
-      text-transform: uppercase;
-      font-size: .95rem;
+    @media (max-width: 1050px) {
+      .hero { min-height: auto; grid-template-columns: 1fr 1fr; }
+      .frc-year-1, .frc-year-2, .frc-year-3, .frc-year-4 { padding-left: 3rem; padding-right: 3rem; }
+      .metric-grid { grid-template-columns: repeat(2, 1fr); }
+      .three-col { gap: 1.3rem; }
     }
+    @media (max-width: 760px) {
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .nav { justify-content: flex-start; }
+      .hero { grid-template-columns: 1fr; padding-top: 4rem; }
+      .hero-visual { max-width: 680px; }
+      .category-band { grid-template-columns: 1fr; padding-bottom: 3rem; }
+      .section-heading { grid-template-columns: 1fr; gap: .5rem; }
+      .split, .diagram-grid, .tuning-evidence, .final-product, .year-detail { grid-template-columns: 1fr; }
+      .three-col, .frc-gallery-medium { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .frc-year-1, .frc-year-2, .frc-year-3, .frc-year-4 { padding: 4rem 1.5rem; }
+      .frc-years, .hero, .section, .category-band, .footer { width: min(100% - 2rem, var(--max)); }
+    }
+    @media (max-width: 520px) {
+      .nav a { padding: .35rem .45rem; font-size: .72rem; }
+      .metric-grid, .three-col, .tuning-story, .frc-gallery-large, .frc-gallery-medium, .frc-gallery-small, .spec-list { grid-template-columns: 1fr; }
+      .hero { padding-block: 3rem; }
+      .section { padding-block: 3.5rem; }
+      .frc-year-1, .frc-year-2, .frc-year-3, .frc-year-4 { padding: 3.5rem 0; }
+      .photo-card { max-width: 100%; }
+    }
+  
 
-    .editor-panel label {
-      display: block;
-      margin: 10px 0 5px;
-      color: var(--muted);
-      font-size: .8rem;
-    }
-
-    .editor-panel input[type="range"] { width: 100%; }
-
-    .corner-controls {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-      margin-top: 10px;
-    }
-
-    .corner-controls button,
-    .reset-button {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-      padding: 8px;
-      cursor: pointer;
-    }
-
-    .corner-controls button.active {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: rgba(62,159,255,.1);
-    }
-
-    .editor-help {
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: .72rem;
-      line-height: 1.45;
-    }
-
-
-    .category-band {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      border-bottom: 1px solid var(--line);
-    }
-    .category-card {
-      padding: 22px;
-      border-right: 1px solid var(--line);
-      background: rgba(62,159,255,.035);
-    }
-    .category-card:last-child { border-right: 0; }
-    .category-card .tag {
-      color: var(--accent);
-      font-family: "Courier New", monospace;
-      font-size: .75rem;
-      letter-spacing: .13em;
-      text-transform: uppercase;
-    }
-    .category-card h3 { margin: 8px 0; font-family: "Courier New", monospace; text-transform: uppercase; }
-    .category-card p { margin: 0; color: var(--muted); line-height: 1.6; font-size: .9rem; }
-    .metric-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 12px;
-    }
-    .metric {
-      border: 1px solid var(--line);
-      padding: 16px;
-      background: rgba(8,20,31,.7);
-    }
-    .metric span { display:block; color:var(--muted); font-size:.7rem; text-transform:uppercase; letter-spacing:.12em; }
-    .metric strong { display:block; margin-top:7px; font-size:1.35rem; color:var(--text); }
-    .diagram-grid {
-      display:grid;
-      grid-template-columns: 1.15fr .85fr;
-      gap:24px;
-      align-items:start;
-    }
-    .process-list { display:grid; gap:14px; }
-    .process-step { border-left:2px solid var(--accent); padding:4px 0 4px 15px; }
-    .process-step strong { display:block; font-family:"Courier New", monospace; text-transform:uppercase; }
-    .process-step span { color:var(--muted); line-height:1.55; font-size:.9rem; }
-    .quote-block { border:1px solid var(--line); padding:20px; color:var(--muted); line-height:1.7; }
-    .quote-block strong { color:var(--text); }
-
-    @media (max-width: 1000px) {
-      .page { grid-template-columns: 1fr; }
-      .sidebar { display: none; }
-      .hero { grid-template-columns: 1fr; }
-      .section { display: block; }
-      .section-index {
-        grid-template-columns: 56px minmax(160px, 240px) minmax(0, 1fr);
-        border-right: 0;
-        border-bottom: 1px solid var(--line);
-      }
-      .flow-line { display: none; }
-      .iteration-strip { grid-template-columns: repeat(1, minmax(0,1fr)); }
-      .category-band, .metric-grid, .diagram-grid { grid-template-columns: 1fr 1fr; }
-      .iteration-step::after { display: none; }
-    }
-
-    @media (max-width: 720px) {
-      .site-shell { width: 100%; margin: 0; border-left: 0; border-right: 0; }
-      .topnav { display: none; }
-      .hero { padding: 34px 20px; }
-      .section-index {
-        grid-template-columns: 48px 1fr;
-        padding: 18px 20px;
-      }
-      .section-index p {
-        grid-column: 1 / -1;;
-      }
-      .section-content { padding: 20px; }
-      .split, .three-col, .final-product { grid-template-columns: 1fr; }
-      .iteration-strip { grid-template-columns: 1fr; }
-      .category-band, .metric-grid, .diagram-grid { grid-template-columns: 1fr; }
-      .editor-panel { left: 10px; right: 10px; width: auto; }
-    }
-    .tuning-story {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-  margin-top: 28px;
+:root{
+ --bg:#071019;--panel:rgba(8,20,31,.88);--line:rgba(138,192,220,.30);
+ --grid-small:rgba(102,177,218,.08);--grid-large:rgba(102,177,218,.14);
+ --text:#e7f3f8;--muted:#a7bdc9;--accent:#3e9fff;
+ --paper:#e8e2d2;--paper-text:#20242a;--tape:rgba(207,187,145,.76);
+ --max:1450px;
 }
-
-.tuning-card {
-  border: 1px solid var(--line);
-  background: rgba(8, 20, 31, .72);
-  padding: 20px;
-  min-width: 0;
+html{scroll-padding-top:90px}
+body{
+ background-color:var(--bg);
+ background-image:linear-gradient(var(--grid-large) 1px,transparent 1px),
+ linear-gradient(90deg,var(--grid-large) 1px,transparent 1px),
+ linear-gradient(var(--grid-small) 1px,transparent 1px),
+ linear-gradient(90deg,var(--grid-small) 1px,transparent 1px);
+ background-size:120px 120px,120px 120px,24px 24px,24px 24px;
+ color:var(--text);font-family:Inter,Arial,Helvetica,sans-serif;
 }
+.page-shell{width:min(100% - 28px,var(--max));margin:14px auto;border:1px solid var(--line);
+ min-height:calc(100vh - 28px);background:rgba(4,12,19,.82);
+ background-image:linear-gradient(rgba(102,177,218,.12) 1px,transparent 1px),
+ linear-gradient(90deg,rgba(102,177,218,.12) 1px,transparent 1px),
+ linear-gradient(rgba(102,177,218,.055) 1px,transparent 1px),
+ linear-gradient(90deg,rgba(102,177,218,.055) 1px,transparent 1px);
+ background-size:120px 120px,120px 120px,24px 24px,24px 24px;overflow:hidden}
+.page-shell:before,.page-shell:after{content:"";position:fixed;z-index:-1;width:40vw;height:40vw;border-radius:50%;filter:blur(110px);opacity:.13;background:#2a99ff;pointer-events:none}
+.page-shell:before{left:-10vw;top:-14vw}.page-shell:after{right:-12vw;bottom:-18vw}
+.topbar{min-height:72px;padding:14px 22px;background:rgba(4,12,19,.92);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.brand{font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.9rem}
+.brand span{color:var(--accent)}
+.nav{gap:18px}.nav a{font-size:.84rem;padding:8px 9px;border-radius:0;color:var(--muted)}
+.nav a:hover{color:var(--text);background:rgba(62,159,255,.07)}
+.page{display:grid;grid-template-columns:230px minmax(0,1fr);align-items:stretch}
+.sidebar{display:flex;flex-direction:column;gap:28px;padding:26px 16px;border-right:1px solid var(--line);background:rgba(4,13,21,.5)}
+.sidebar-label{font: .72rem "Courier New",monospace;letter-spacing:.15em;color:var(--accent);text-transform:uppercase;margin:0 0 8px}
+.project-nav{display:grid;gap:8px}
+.project-nav a{padding:10px 11px;border-left:2px solid transparent;color:var(--muted);font-size:.88rem}
+.project-nav a:hover{color:var(--accent);border-left-color:var(--accent);background:rgba(62,159,255,.07)}
+.drawing-block{margin-top:auto;border:1px solid var(--line);padding:12px;font: .72rem/1.6 "Courier New",monospace;color:var(--muted)}
+main{min-width:0}
+.hero{grid-template-columns:.9fr 1.35fr;gap:28px;padding:48px 42px 36px;min-height:560px;border-bottom:1px solid var(--line)}
+.eyebrow,.section-kicker,.year-label{color:var(--accent);font: .78rem "Courier New",monospace;letter-spacing:.14em;text-transform:uppercase}
+h1{font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;text-transform:uppercase;font-weight:500;letter-spacing:.025em;line-height:.9}
+.subtitle{color:var(--accent);font:1.05rem "Courier New",monospace}
+.lead,.year-intro{color:var(--muted);line-height:1.75}
+.meta-list div{border-left-color:var(--accent);color:#c9d8df}
+.hero-visual{min-height:390px;display:grid;place-items:center;padding:12px;border:1px solid rgba(78,164,255,.72);border-radius:0;background:rgba(7,18,28,.72);position:relative}
+.hero-visual:before,.hero-visual:after{content:"";position:absolute;width:24px;height:24px;border-color:var(--accent);pointer-events:none}
+.hero-visual:before{top:5px;left:5px;border-top:2px solid;border-left:2px solid}
+.hero-visual:after{bottom:5px;right:5px;border-bottom:2px solid;border-right:2px solid}
+.photo-card{background:#d7d7d2;color:#20252a;border-radius:0;padding:10px 10px 28px;box-shadow:0 18px 45px rgba(0,0,0,.42);isolation:isolate}
+.photo-card img{border:1px solid rgba(20,35,45,.25);border-radius:0;background:linear-gradient(135deg,#162633,#27485b)}
+.photo-card figcaption{text-align:center;font: .82rem "Courier New",monospace;color:#20252a;margin-top:10px}
+.tape{display:none;width:76px;height:25px;background:linear-gradient(90deg,rgba(255,255,255,.08),transparent 16%,transparent 84%,rgba(0,0,0,.06)),var(--tape);clip-path:polygon(2% 15%,98% 0,100% 84%,0 100%);pointer-events:none}
+.photo-card.tape-tl .tape.tl,.photo-card.tape-tr .tape.tr,.photo-card.tape-bl .tape.bl,.photo-card.tape-br .tape.br{display:block}
+.tape.tl{top:-8px;left:-24px;transform:rotate(-34deg)}.tape.tr{top:-8px;right:-24px;transform:rotate(34deg)}
+.tape.bl{bottom:-7px;left:-24px;transform:rotate(31deg)}.tape.br{bottom:-7px;right:-24px;transform:rotate(-31deg)}
+.category-band{width:100%;margin:0;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;padding:0;border-bottom:1px solid var(--line)}
+.category-card{padding:22px;border:0;border-right:1px solid var(--line);border-radius:0;background:rgba(62,159,255,.035)}
+.category-card:last-child{border-right:0}.category-card .tag{height:auto;width:auto;background:none;color:var(--accent);font: .75rem "Courier New",monospace;letter-spacing:.13em;text-transform:uppercase}
+.category-card .tag:after{content:"FOCUS AREA"}
+.category-card h3,.copy h3,.tuning-card h3{font-family:"Courier New",monospace;text-transform:uppercase}
+.section{width:100%;padding:0;border-top:0;border-bottom:1px solid var(--line);min-height:0}
+.section-heading{display:grid;grid-template-columns:64px minmax(180px,300px) minmax(0,1fr);gap:18px;align-items:center;margin:0;padding:22px 30px 18px;background:rgba(5,17,27,.72);border-bottom:1px solid var(--line)}
+.section-heading h2{font:1.15rem "Courier New",monospace;text-transform:uppercase;letter-spacing:.045em;white-space:normal;margin:0;padding-left:16px;border-left:6px solid var(--accent)}
+.section-heading p{margin:0;color:var(--muted);font-size:.92rem;line-height:1.55}
+.section-content{padding:30px;display:grid;gap:24px}
+.frc-years{width:100%}.frc-year{border-top:0;border-bottom:1px solid var(--line)}
+.frc-year-inner{max-width:none!important;width:100%}
+.frc-year-1,.frc-year-2,.frc-year-3,.frc-year-4{padding:0}
+.frc-year-inner{padding:28px 30px 36px}
+.year-title{font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;text-transform:uppercase;font-weight:500;letter-spacing:.02em}
+.year-intro{max-width:850px}
+.year-detail,.split,.diagram-grid,.tuning-evidence{gap:24px}
+.paper-note{background:var(--paper);color:var(--paper-text);border-radius:0;font-family:"Patrick Hand","Segoe Print",cursive;font-size:1.08rem;box-shadow:0 18px 42px rgba(0,0,0,.34)}
+.paper-note h3,.paper-note p,.paper-note ul,.paper-note li{color:var(--paper-text)!important;opacity:1!important}
+.metric,.spec,.process-step,.tuning-card{background:rgba(8,20,31,.72);border:1px solid var(--line);border-radius:0}
+.metric span,.spec span{color:var(--muted)}
+.process-step strong,.step-label{color:var(--accent)}
+.quote-block{border:1px solid var(--line);border-left:3px solid var(--accent);background:rgba(62,159,255,.05);color:var(--muted)}
+.world-championship{border-color:rgba(62,159,255,.4);border-radius:0;background:rgba(62,159,255,.045)}
+.world-championship__heading h3{color:var(--accent)}
+.footer{width:100%;padding:30px;border-top:1px solid var(--line);font: .75rem "Courier New",monospace}
+.editor-toggle{position:fixed;right:18px;bottom:18px;z-index:110;border:1px solid var(--line);background:rgba(62,159,255,.12);color:var(--text);padding:10px 14px;border-radius:6px;cursor:pointer}
+.editor-panel{right:18px;bottom:70px;width:280px;background:rgba(5,14,22,.97);border:1px solid rgba(62,159,255,.55);border-radius:0;z-index:109}
+.editor-panel h3{font: .95rem "Courier New",monospace;text-transform:uppercase}
+.corner-controls button,.reset-button{border-radius:0;background:rgba(255,255,255,.04)}
+.corner-controls button.active{border-color:var(--accent);color:var(--accent);background:rgba(62,159,255,.1)}
+body.editor-open .photo-card{cursor:pointer}
+.photo-card.selected{outline:2px solid var(--accent);outline-offset:5px}
+@media(max-width:1000px){.page{grid-template-columns:1fr}.sidebar{display:none}.hero{grid-template-columns:1fr 1fr}.section-heading{grid-template-columns:56px minmax(160px,240px) minmax(0,1fr)}}
+@media(max-width:720px){.page-shell{width:100%;margin:0;border-left:0;border-right:0}.topbar{align-items:flex-start;flex-direction:column}.nav{justify-content:flex-start}.hero{grid-template-columns:1fr;padding:34px 20px}.section-heading{grid-template-columns:48px 1fr;padding:18px 20px}.section-heading p{grid-column:1/-1}.section-content,.frc-year-inner{padding:20px}.split,.three-col,.final-product,.year-detail,.tuning-evidence,.diagram-grid{grid-template-columns:1fr}.category-band,.metric-grid,.tuning-story{grid-template-columns:1fr}.category-card{border-right:0;border-bottom:1px solid var(--line)}.editor-panel{left:10px;right:10px;width:auto}.frc-gallery-medium{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:500px){.frc-gallery-large,.frc-gallery-medium,.frc-gallery-small,.metric-grid,.three-col,.spec-list{grid-template-columns:1fr}}
 
-.tuning-card .step-label {
-  color: var(--accent);
-  font-family: "Courier New", monospace;
-  font-size: .76rem;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-}
-
-.tuning-card h3 {
-  margin: 8px 0 10px;
-  font-family: "Courier New", monospace;
-  text-transform: uppercase;
-  font-size: 1.08rem;
-}
-
-.tuning-card p {
-  margin: 0;
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-.tuning-evidence {
-  display: grid;
-  grid-template-columns: .9fr 1.1fr;
-  gap: 24px;
-  align-items: start;
-  margin-top: 28px;
-}
-/* Year 01 gallery: two equal columns filling the available width */
-.frc-gallery.frc-gallery-small {
-    display: grid !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 24px;
-    width: 100%;
-    max-width: 100%;
-    align-items: stretch;
-}
-
-.frc-gallery.frc-gallery-small .photo-card {
-    width: 100% !important;
-    max-width: none !important;
-    min-width: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-.frc-gallery.frc-gallery-small .photo-card img {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-}
-
-/* Stack the images on narrow mobile screens */
-@media (max-width: 500px) {
-    .frc-gallery.frc-gallery-small {
-        grid-template-columns: minmax(0, 1fr) !important;
-    }
-}
-
-  </style>
+</style>
 </head>
 <body>
-  <div class="site-shell">
-    <header class="topbar">
-      <a href="#top" class="brand">Keith Flesher / FRC Robotics</a>
-      
-      <nav class="topnav">
-        <a href="../index.html#projects" class="project-detail__back">
-      ← Back to Projects
-    </a>
-    <!--
-        <a href="#overview">Overview</a>
-        <a href="#manufacturing">Manufacturing</a>
-        <a href="#leadership">Leadership</a>
-        <a href="#tuning">Tuning</a>
-        <a href="#results">Results</a>
-      -->
-      </nav>
-    </header>
+<div class="page-shell" id="top">
+<header class="topbar">
+<a class="brand" href="#top">Keith Flesher <span>/</span> FRC Robotics</a>
+<nav class="nav" aria-label="Page navigation"><a href="../index.html#projects">← Back to Projects</a></nav>
+</header>
+<div class="page">
+<aside class="sidebar" style="font-size: 1px; gap: 2px; width: 0px; padding-right: 0px; padding-left: 0px;"></aside>
+<main>
 
-    <div class="page" id="top">
-     
-          
-        </div>
-      </aside>
-
-      <main>
-        <section class="hero">
-          <div>
-            <h1>FRC Robotics</h1>
-            <div class="subtitle">Engineering · leadership ·Coopetition·  Manufacturing</div>
-            <p class="lead">
-            <div class="meta">durring my time on the team I was able to learn and grow as a leader and engineer. I was able to lead a team of students in the manufacturing of robot components, while also learning how to program and operate CNC machines. I was also able to learn how to work with a team of students to design and build a robot that could compete at a high level. I was able to learn how to work with a team of students to design and build a robot that could compete at a high level. I was also able to learn how to work with a team of students to design and build a robot that could compete at a high level.
-              <div>ROLE — FABRICATION LEAD • CNC Machinist & CNC PROGRAMMER • Teacher • Speachproi</div>
-              <div>DURATION — THREE COMPETITION SEASONS</div>
-              <div>TOOLS — FUSION 360 MANUFACTURING, ONSHAPE, MACH 4, MATERIAL TRACKING, CALIPERS, MICROMETERS, BORE GAUGES, AND DIAL INDICATORS.</div>
-            </div>
+      <section class="hero" style="text-align: left; padding-left: 0px;">
+        <div>
+          <div class="eyebrow">FIRST Robotics Competition</div>
+          <h1>FRC<br>Robotics</h1>
+          <div class="subtitle">Engineering · Leadership · Coopertition · Manufacturing</div>
+          <p class="lead">Over three years on my high school FIRST Robotics Competition team, I gained experience across nearly every aspect of robotics, progressing from hands-on engineering and manufacturing to leading fabrication operations. I helped design, prototype, manufacture, wire, assemble, and integrate five competition robots while training and managing 10 students in the operation and maintenance of our shop equipment. Beyond robot development, I participated in community outreach, volunteer efforts, and STEM education initiatives, helping introduce others to engineering and robotics. I also collaborated and exchanged knowledge with teams, engineers, and industry professionals from across the country and around the world. Over those three years, I competed in 12 events across the United States, earned a regional victory in Oklahoma, and qualified for the 2025 FIRST Championship, competing alongside more than 600 teams from around the world.
+</p>
+          <div class="meta-list">
+            <div><strong>ROLE —</strong> Fabrication Lead · CNC Machinist and Programmer · Student Trainer · Special Projects Lead</div>
+            <div><strong>DURATION —</strong> Three Years 5 Robots</div>
+            
           </div>
-          <div class="hero-visual blueprint-frame">
-            <figure class="photo-card tape-tl tape-br" data-rotate="-1.2" style="--rotation:-1.2deg; width:min(94%,780px); --ratio:10/10;">
-              <span class="tape tl"></span><span class="tape tr"></span><span class="tape bl"></span><span class="tape br"></span>
-              <img src="../assets/jpeg/Project_1/1.jpg" alt="2024 FRC Robotics Season" />
-              <figcaption>  </figcaption>
-            </figure>
+        </div>
+        <div class="hero-visual" style="padding-left: 5px; font-weight: 300; position: relative;">
+          <figure class="photo-card" data-rotate="-1.2" style="--rotation:-1.2deg; --ratio:1/1;">
+            <span class="tape tl"></span><span class="tape tr"></span><span class="tape bl"></span><span class="tape br"></span>
+            <img src="../assets/jpeg/Project_1/1.jpg" alt="FRC robotics season project">
+            <figcaption>2025 season Denver competition</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <div class="category-band" id="overview">
+        <article class="category-card"><div class="tag"></div><h3>Engineering</h3><p>Contributed to the complete robot development process, from mechanical design and prototyping to machining, fabrication, wiring, and final assembly.</p></article>
+        <article class="category-card"><div class="tag"></div><h3>Leadership</h3><p>Led fabrication operations, training and managing 10 students while coordinating shop activities, materials, and manufacturing responsibilities.</p></article>
+        <article class="category-card"><div class="tag"></div><h3>Precision &amp; Reliability</h3><p>Focused on producing accurate, high-quality components through careful machine setup, part inspection, equipment maintenance, and mechanical troubleshooting, maintaining CNC accuracy within 0.001 inches</p></article>
+      </div>
+
+      <div class="frc-years">
+        <section class="frc-year frc-year-1" id="year-one">
+          <div class="frc-year-inner">
+            <div class="year-label">Year 00 / 2023 Charged up</div>
+            <h2 class="year-title">Building the foundation</h2>
+            <p class="year-intro"></p><p></p><p>My first season focused on learning the fundamentals of the engineering design process. Alongside other new team members, I worked on an offseason robot, taking initial sketches and concepts and developing them into physical prototypes before refining them into CAD designs. This introduced me to the relationship between mechanical design, prototyping, and the practical requirements of manufacturing.</p><p></p><p></p>
+            <div class="frc-gallery frc-gallery-small">
+              <figure class="photo-card" style="--rotation:-1deg;"><span class="tape tl"></span><img src="../assets/jpeg/Project_1/2.jpg" alt="Fusion 360 manufacturing toolpaths"><figcaption>1st bot offseason</figcaption></figure>
+              <figure class="photo-card" style="--rotation:1deg;"><span class="tape tr"></span><img src="../assets/jpeg/Project_1/3.jpg" alt="CNC router machining a robot component"><figcaption>Learning machine setup and operation</figcaption></figure>
+            </div>
+            <div class="year-detail">
+              <div class="copy"><h3>Learning by making</h3><p></p><p>I began learning the fundamentals of CNC machining alongside more experienced students, including preparing raw stock, establishing work zero, selecting appropriate tooling, and inspecting finished parts. I also learned basic machine operation and setup while developing an understanding of how design flaws, setup errors, and machine accuracy affect finished components. I applied what I had learned during the design and machining process to help manufacture and assemble our competition robot. Working from CAD models and engineering drawings, I gained experience identifying components, understanding manufacturing requirements, and using proper assembly methods. This helped me understand how individual manufactured parts come together to form complete mechanical systems.</p><p>We put our offseason robot to the test at the KCMT competition, where I served as its operator against approximately 20 other teams, including our previous season's robot. Despite being built primarily by rookie members, the robot performed well, finishing four ranking positions higher than the previous year's robot and coming within just one ranking point of becoming an alliance captain. This was an early opportunity to apply what we had learned and demonstrate what our new team members could accomplish.</p><p></p></div>
+              <div class="paper-note" style="--rotation:1deg;"><h3>Focus areas</h3><ul><li>Worked alongside other new members to develop an offseason robot.</li><li>Learned the fundamentals of mechanical design, sketching, CAD, and prototyping.</li><li>Inspecting parts for fit and dimensional accuracy</li><li>Built a foundation for future competition robot development.</li></ul></div>
+            </div>
+          </div><div class="frc-year-inner">
+            <div class="year-label">Year 01 / 2024 Crescendo</div>
+            <h2 class="year-title">Putting Skills to the Test</h2>
+            <p class="year-intro"></p><p>Our first competition build began with an intensive review of the game rules during the first week, followed by prototyping, mechanical design, and fabrication. Working through the six-week build season, I took on the role of primary CNC operator, manufacturing many of the robot's custom components while developing faster and more efficient machining workflows. I began taking greater ownership of the manufacturing process, finding ways to improve machining operations, reduce production time, and keep fabrication on schedule. With a one-week initial design and prototyping phase followed by six weeks of development, we pushed through a demanding build season and completed our robot just in time for the 2024 FIRST Robotics Competition season, Crescendo.</p><p></p>
+            <div class="frc-gallery frc-gallery-small">
+              <figure class="photo-card" style="--rotation:-1deg;"><span class="tape tl"></span><img src="../assets/jpeg/Project_1/2.jpg" alt="Fusion 360 manufacturing toolpaths"><figcaption>Learning CAM and toolpath planning</figcaption></figure>
+              <figure class="photo-card" style="--rotation:1deg;"><span class="tape tr"></span><img src="../assets/jpeg/Project_1/3.jpg" alt="CNC router machining a robot component"><figcaption>Learning machine setup and operation</figcaption></figure>
+            </div>
+            <div class="year-detail">
+              <div class="copy"><h3>REAl competition</h3><p>Our first competition took place in Utah, where we competed against more than 30 teams and finished qualification matches ranked 1st. During the elimination rounds, aggressive defensive play caused our drivetrain motor shafts to break free from their sockets, temporarily ending our run. After repairing the damage, we traveled to our next competition in Denver a few weeks later. Following strong practice performances, we encountered an unexpected challenge when high-intensity projector lighting, including older UV-rich lamps, interfered with our robot's vision system. The lighting made it difficult for the robot to reliably detect and track the game pieces. Our programming team worked to adjust the vision system, but the changes significantly reduced our scoring capabilities, and we ultimately fell short of our goals at that event.</p></div>
+              <div class="paper-note" style="--rotation:1deg;"><h3></h3><h3 data-pm-slice="1 1 []">Season Highlights</h3><ul><li>Primary CNC operator during the six-week competition build.</li><li>Primary CNC operator during the six-week competition build.</li><li>Helped complete the 2024 Crescendo competition robot under a tight deadline.</li><li>Achieved 1st place in qualification rankings at our first Utah regional.</li></ul></div>
+            </div>
           </div>
         </section>
 
-        <div class="category-band" id="overview">
-          <article class="category-card"><div class="tag"></div><h3>Engineering</h3><p>CAM, workholding, tooling, sheet processing, inspection, and finished robot components.</p></article>
-          <article class="category-card"><div class="tag"></div><h3>Leadership</h3><p>Training students, managing priorities, coordinating with CAD, and keeping production moving under deadlines.</p></article>
-          <article class="category-card"><div class="tag"></div><h3>Tuning</h3><p>Backlash, steps-per-unit, gantry synchronization, limit switches, accuracy checks, and failure recovery.</p></article>
-        </div>
-
-
-      <div class="section-index"><h2>Year 01 / Learning the process</h2><p>   </p><div class="flow-line"></div></div>
-     <section class="hero">
-          <div>
-            <div class="eyebrow"></div>
-            <h1>FRC Robotics</h1>
-
-
-    
-    <p class="year-intro">My first season was about learning how the team turned ideas into a working competition robot. I began developing an understanding of manufacturing, machine operation, part inspection, and the relationship between CAD design and the physical assembly.</p>
-    
-<div class="frc-gallery frc-gallery-small">
-
-    <figure class="photo-card" style="--rotation:-1deg;">
-        <span class="tape tl"></span>
-        <img
-            src="../assets/jpeg/Project_1/2.jpg"
-            alt="Fusion 360 manufacturing toolpaths"
-        >
-        <figcaption>Learning CAM and toolpath planning</figcaption>
-    </figure>
-
-    <figure class="photo-card" style="--rotation:1deg;">
-        <span class="tape tr"></span>
-        <img
-            src="../assets/jpeg/Project_1/3.jpg"
-            alt="CNC router machining a robot component"
-        >
-        <figcaption>Learning machine setup and operation</figcaption>
-    </figure>
-
-</div>
-
-
-
-
-
-
-
-
-
         <section class="frc-year frc-year-2" id="year-two">
-          <div class="frc-year-inner">
-            <div class="year-label">Year 02 / Taking ownership</div>
-            <h2 class="year-title">From operator to contributor</h2>
-            <p class="year-intro">As I gained experience, I took on more responsibility for planning and producing robot components. I coordinated with CAD and mechanical teams, organized parts by material and build order, and began helping other students learn the manufacturing workflow.</p>
-            <div class="frc-gallery frc-gallery-large">
-              <figure class="photo-card" style="--rotation:-1.2deg;"><span class="tape tl"></span><span class="tape br"></span><img src="../assets/jpeg/Project_2/4.jpeg" alt="Finished CNC-machined robot parts"><figcaption>Inspecting and preparing finished parts</figcaption></figure>
-              <figure class="photo-card" style="--rotation:1deg;"><span class="tape tr"></span><span class="tape bl"></span><img src="../assets/jpeg/Project_2/6.jpeg" alt="Training students on CNC machine setup"><figcaption>Sharing machine setup and operating procedures</figcaption></figure>
-            </div>
-            <div class="year-detail">
-              <div class="copy"><h3>Keeping production organized</h3><p>I coordinated manufacturing around the robot's assembly sequence, considering stock size, material, tooling, and which parts were needed first. This helped connect the manufacturing schedule to the mechanical team's progress. I also started explaining not just which steps to follow, but why each setup and inspection step mattered.</p></div>
-              <div class="paper-note" style="--rotation:-1deg;"><h3>Growing responsibilities</h3><ul><li>Organizing part queues and materials</li><li>Coordinating with CAD and mechanical teams</li><li>Teaching students CNC workflow fundamentals</li><li>Documenting repeatable machine procedures</li></ul></div>
-            </div>
-          </div>
+          
         </section>
 
         <section class="frc-year frc-year-3" id="year-three">
           <div class="frc-year-inner">
-            <div class="year-label">Year 03 / Competition and leadership</div>
-            <h2 class="year-title">Working under real competition pressure</h2>
-            <p class="year-intro">By this stage, I had developed a stronger role in fabrication and troubleshooting. I helped keep production moving during a critical machine failure and worked with the team to diagnose, repair, and recalibrate the CNC router so we could continue producing accurate robot parts.</p>
-            <div class="frc-gallery frc-gallery-medium">
-              <figure class="photo-card" style="--rotation:-1deg;"><span class="tape tl"></span><img src="../assets/jpeg/Project_2/9.jpeg" alt="CNC gantry and calibration work"><figcaption>Investigating alignment and machine motion</figcaption></figure>
-              <figure class="photo-card" style="--rotation:1deg;"><span class="tape tr"></span><img src="../assets/jpeg/Project_2/10.jpeg" alt="Dial indicator used for CNC calibration"><figcaption>Measuring backlash and repeatability</figcaption></figure>
-              <figure class="photo-card" style="--rotation:-.5deg;"><span class="tape bl"></span><img src="../assets/jpeg/Project_2/11.jpeg" alt="Bearing hole dimensional validation"><figcaption>Checking fit and dimensional accuracy</figcaption></figure>
+            <div class="world-championship">
+  <div class="world-championship__heading">
+    <div class="eyebrow">Competition highlight</div>
+    <h3>
+    </h3>
+    <h3 data-pm-slice="1 1 []">Teaching New Members</h3>
+    <p>
+    </p>
+    <p data-pm-slice="1 1 []">For our next offseason robot, I took on a teaching role, helping 10 new team members develop the mechanical skills needed to build a robot for the 2024 Crescendo season. I guided them through the mechanical design process, teaching prototyping, equipment operation, interpreting CAD models, and translating digital designs into manufactured parts and completed assemblies. From those 10 members, I selected four to receive additional hands-on training in CNC operation, giving them the skills to independently manufacture custom components.</p>
+    <p>
+    </p>
+  </div>
+  <div class="frc-gallery frc-gallery-medium">
+    <figure class="photo-card" style="--rotation:-1deg;">
+      <img src="../assets/jpeg/Project_1/12.png" alt="Robot and team at the World Championship">
+      <span class="tape tl">
+      </span>
+      <figcaption>Team and robot at the championship</figcaption>
+    </figure>
+    <figure class="photo-card" style="--rotation:1deg;">
+      <span class="tape tr">
+      </span>
+      <img src="../assets/jpeg/Project_1/13.jpg" alt="Robot competing at the World Championship">
+      <figcaption>Competition on the world stage</figcaption>
+    </figure>
+    <figure class="photo-card" style="--rotation:-.5deg;">
+      <span class="tape bl">
+      </span>
+      <img src="../assets/jpeg/Project_1/14.jpg" alt="Team experience at the World Championship">
+      <figcaption>The people behind the robot</figcaption>
+    </figure>
+   
+  </div>
+<p>
+      </p><p data-pm-slice="1 1 []">At the KCMT competition, I returned as the operator of our main competition robot, competing against the rookie team I had helped train. Our main robot became the captain of Alliance 5 during playoffs, while the offseason robot built by the rookies earned 12th place in the playoffs. This gave me the opportunity to see the team apply the skills they had developed while I competed against them.</p>
+    <p></p>
+</div><div class="year-label">Year 03 / 2025 Reff scape</div>
+            <h2 class="year-title">Makeing it to the big leagues</h2>
+            <p class="year-intro"></p><p data-pm-slice="1 1 []">I began the 2025 season as Mechanical Lead, overseeing a group of more than 10 students and taking an active role in mechanical design decisions, prototyping, and robot development. About a quarter of the way through the season, I transitioned into the Fabrication Lead role, overseeing a team of four while continuing to support the mechanical group. With more time available than the previous season, we were able to develop a more refined robot and improve our overall build process. One of our biggest goals was to eliminate major mechanical failures, and we successfully achieved that goal throughout the competition season.</p><p></p><div class="frc-gallery frc-gallery-medium">
+              <figure class="photo-card" style="--rotation:-1deg;"><span class="tape tl"></span><img src="../assets/jpeg/Project_1/9.jpg" alt="CNC gantry and calibration work"><figcaption>Investigating alignment and machine motion</figcaption></figure>
+              <figure class="photo-card" style="--rotation:1deg;"><span class="tape tr"></span><img src="../assets/jpeg/Project_1/10.jpg" alt="Dial indicator used for CNC calibration"><figcaption>Measuring backlash and repeatability</figcaption></figure>
+              <figure class="photo-card" style="--rotation:-.5deg;"><span class="tape bl"></span><img src="../assets/jpeg/Project_1/11.jpg" alt="Bearing hole dimensional validation"><figcaption>Checking fit and dimensional accuracy</figcaption></figure>
+            </div><p class="year-intro"></p><p data-pm-slice="1 1 []">Our first competition was in Denver, where we finished qualification matches ranked 10th and advanced to the third round of playoffs. At our next event in Oklahoma, we ranked 6th and were selected as the first pick of the number-one alliance. We went on to win the regional, earning our team's first-ever qualification for the FIRST Championship in Houston. This was a major milestone for our team and the result of years of work toward reaching the World Championship.</p><p></p>
+            
+
+            <div class="world-championship">
+  <div class="world-championship__heading">
+    <div class="eyebrow">Competition highlight</div>
+    <h3>FIRST Robotics World Championship</h3>
+    <p>
+      </p><p data-pm-slice="1 1 []">For our first World Championship, our goal was to learn as much as possible and gain experience competing alongside the best teams in the world. We finished ranked 14th in the Daly Division, competing among more than 600 teams from around the world. Although we knew we were not yet at the level of the top-performing teams, every member of our team took the opportunity to learn. We actively spoke with other teams, asked questions, and took notes on their designs, strategies, and engineering processes.</p>
+    <p></p>
+  </div>
+  <div class="frc-gallery frc-gallery-medium">
+    <figure class="photo-card" style="--rotation:-1deg;">
+      <span class="tape tl">
+      </span>
+      <img src="../assets/jpeg/Project_1/12.png" alt="Robot and team at the World Championship">
+      <figcaption>Team and robot at the championship</figcaption>
+    </figure>
+    <figure class="photo-card" style="--rotation:1deg;">
+      <span class="tape tr">
+      </span>
+      <img src="../assets/jpeg/Project_1/13.jpg" alt="Robot competing at the World Championship">
+      <figcaption>Competition on the world stage</figcaption>
+    </figure>
+    <figure class="photo-card" style="--rotation:-.5deg;">
+      <span class="tape bl">
+      </span>
+      <img src="../assets/jpeg/Project_1/14.jpg" alt="Team experience at the World Championship">
+      <figcaption>The people behind the robot</figcaption>
+    </figure>
+  </div>
+      <p data-pm-slice="1 1 []"></p><p data-pm-slice="1 1 []">I focused particularly on manufacturing methods, material selection, and the different ways top teams designed and fabricated their robots. Seeing the approaches used by some of the best teams in the world gave me new ideas and a better understanding of what was possible in robot manufacturing. I brought back valuable knowledge that could be applied to future robot designs and our team's fabrication processes.</p><p></p>
+
+</div>
+            <div class="year-detail">
+              <div class="copy"><h3>Solving problems instead of working around them</h3><p>Looking back on the 2025 season, it was the most significant year of my time in FRC. I grew from leading mechanical development to managing fabrication operations, while continuing to contribute to the overall robot design and build process. Winning our first regional and qualifying for the World Championship showed how far our team had progressed. More importantly, competing at Worlds exposed me to new manufacturing techniques, design approaches, and ideas from teams around the world. I left the season with a stronger understanding of engineering and manufacturing, along with new knowledge and experience that I could bring into future projects.</p></div>
+              <div class="paper-note" style="--rotation:1deg;"><h3></h3><h3 data-pm-slice="1 1 []">Season Highlights</h3><ul>
+  <li>
+    <p data-pm-slice="1 1 [&quot;list&quot;,{&quot;spread&quot;:false,&quot;start&quot;:2102,&quot;end&quot;:2523},&quot;regular_list_item&quot;,{&quot;start&quot;:2102,&quot;end&quot;:2176}]">Transitioned from Mechanical Lead to Fabrication Lead during the season.</p>
+  </li>
+<li>
+    <p data-pm-slice="1 1 [&quot;list&quot;,{&quot;spread&quot;:false,&quot;start&quot;:2102,&quot;end&quot;:2523},&quot;regular_list_item&quot;,{&quot;start&quot;:2102,&quot;end&quot;:2176}]"></p><p data-pm-slice="1 1 [&quot;list&quot;,{&quot;spread&quot;:false,&quot;start&quot;:2102,&quot;end&quot;:2523},&quot;regular_list_item&quot;,{&quot;start&quot;:2263,&quot;end&quot;:2348}]">Helped deliver a robot that completed the season without major mechanical failures.</p><p></p>
+  </li>
+  <li>
+    <p data-pm-slice="1 1 [&quot;list&quot;,{&quot;spread&quot;:false,&quot;start&quot;:2102,&quot;end&quot;:2523},&quot;regular_list_item&quot;,{&quot;start&quot;:2177,&quot;end&quot;:2262}]">Led a fabrication group of four while continuing to support mechanical development.</p>
+  </li>
+  <li>
+    <p data-pm-slice="1 1 [&quot;list&quot;,{&quot;spread&quot;:false,&quot;start&quot;:2102,&quot;end&quot;:2523},&quot;regular_list_item&quot;,{&quot;start&quot;:2349,&quot;end&quot;:2422}]">Won the Oklahoma regional as the first pick of the number-one alliance.</p>
+  </li>
+  <li>
+    <p data-pm-slice="1 1 [&quot;list&quot;,{&quot;spread&quot;:false,&quot;start&quot;:2102,&quot;end&quot;:2523},&quot;regular_list_item&quot;,{&quot;start&quot;:2476,&quot;end&quot;:2523}]">Finished 14th in the Daly Division at Worlds.</p>
+  </li>
+</ul></div>
             </div>
+          </div>
+        </section>
+ 
+    
+<section class="frc-year frc-year-4" id="year-four">
+  <div class="frc-year-inner">
+    <div class="year-label">Year 04 / 2026 Rebuit</div>
+    <h2 class="year-title">Rebuilding the team, the shop, and the robot</h2>
+    <p class="year-intro">
+      After the 2025 season, our team faced a major transition. We moved into a
+      new facility, lost most of our returning members, and had to rebuild our
+      workshop and manufacturing capabilities before the next competition
+      season. With a much smaller team and a demanding build schedule, I took
+      on responsibilities across shop development, fabrication, mechanical
+      design, and robot assembly.
+    </p>
+
+    <div class="metric-grid">
+      <div class="metric">
+        <span>Students remaining</span>
+        <strong>7 from 30</strong>
+      </div>
+      <div class="metric">
+        <span>Students trained</span>
+        <strong>7 in fabrication</strong>
+      </div>
+      <div class="metric">
+        <span>Parts manufactured</span>
+        <strong>175 total</strong>
+      </div>
+      <div class="metric">
+        <span>Documentation</span>
+        <strong>120+ pages</strong>
+      </div>
+    </div>
+
+    <div class="frc-gallery frc-gallery-large">
+      <figure class="photo-card" style="--rotation:-1deg;">
+        <span class="tape tl"></span><span class="tape br"></span>
+        <img src="../assets/jpeg/Project_1/15.jpg" alt="Robotics team working in the new workshop">
+        <figcaption>Establishing the new fabrication space</figcaption>
+      </figure>
+      <figure class="photo-card" style="--rotation:1deg;">
+        <span class="tape tr"></span><span class="tape bl"></span>
+        <img src="../assets/jpeg/Project_1/16.jpg" alt="CNC machine and fabrication equipment">
+        <figcaption>Restoring the CNC for the upcoming season</figcaption>
+      </figure>
+    </div>
+
+    <div class="year-detail">
+      <div class="copy">
+        <h3>A season that started before the build</h3>
+        <p>
+          We lost access to our previous workshop over the summer and moved
+          into a much larger facility in August. At the same time, approximately
+          40 seniors and three other members left a team of around 50, leaving
+          us with a small returning group and a large number of new students to
+          train. We did not have the time or people to build a second offseason
+          robot, so our focus shifted toward getting the new space operational
+          and preparing the team for the upcoming season.
+        </p>
+        <p>
+          Before Christmas break, we needed to move and organize the shop,
+          build Colorado's first full-size FRC field, train new members, and
+          bring the CNC back into operation. I helped plan the layout of our
+          new facility, move equipment, construct the field, and teach mostly
+          freshman rookies the fundamentals of the workshop. During the final
+          month before break, I worked with a new mentor to learn, tune, and
+          document the CNC setup process, bringing the machine back to an
+          accuracy of 0.001 inch.
+        </p>
+      </div>
+
+      <div class="paper-note" style="--rotation:1deg;">
+        <h3>Starting from the ground up</h3>
+        <ul>
+          <li>Moved into a significantly larger workshop</li>
+          <li>Helped plan the new shop layout and equipment placement</li>
+          <li>Built the team's first full-size FRC field in Colorado</li>
+          <li>Trained a new group of primarily freshman members</li>
+          <li>Restored CNC operation before Christmas break</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="frc-fab-note">
+      <strong>Season challenge:</strong> We entered the competition season
+      with a new facility, a largely inexperienced team, and a manufacturing
+      process that had to be rebuilt from the ground up.
+    </div>
+  </div>
+</section>
+
+<!-- FABRICATION AND ROBOT DEVELOPMENT -->
+
+<section class="section" id="manufacturing">
+  <div class="section-heading">
+    <div>
+      <div class="section-kicker">Competition season / 01</div>
+      <h2>Fabrication and robot development</h2>
+    </div>
+  </div>
+
+  <div class="section-content">
+    <div class="metric-grid">
+      
+      
+      
+      
+    </div>
+
+    <div class="year-detail">
+      <div class="copy">
+        <h3>Taking ownership of fabrication</h3>
+        <p>
+          I entered the competition season as Fabrication and Special Projects
+          Lead, serving as the primary machinist and overseeing the students
+          responsible for manufacturing the robot's components. I also
+          contributed to the overall robot design and worked directly on
+          prototyping the shooter. Alongside the returning members I had
+          trained the previous year, I started training two additional students to
+          operate and work with our fabrication equipment.
+        </p>
+        <p>
+          Because of the limited time available, our fabrication shop was
+          operating on generator power. We were working to keep manufacturing
+          moving while the mechanical team developed the robot and prepared
+          parts for assembly. About two and a half weeks into the build,
+          that already demanding process was interrupted by a major CNC
+          failure.
+        </p>
+      </div>
+
+      <div class="paper-note" style="--rotation:-1deg;">
+        <h3>My responsibilities</h3>
+        <ul>
+          <li>Fabrication and Special Projects Lead</li>
+          <li>Primary CNC machinist for the robot</li>
+          <li>Trained seven students in fabrication</li>
+          <li>Contributed to overall robot design</li>
+          <li>Prototyped the robot's shooter</li>
+          <li>Coordinated manufacturing with mechanical development</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="three-col">
+      <figure class="photo-card" style="--rotation:-1.7deg;">
+        <span class="tape tl"></span>
+        <img src="../assets/jpeg/Project_1/17.jpg" alt="Robot components being prepared for CNC machining">
+        <figcaption>Preparing custom robot components</figcaption>
+      </figure>
+      <figure class="photo-card" style="--rotation:1.2deg;">
+        <span class="tape tr"></span><span class="tape bl"></span>
+        <img src="../assets/jpeg/Project_1/18.jpg" alt="CNC machining process">
+        <figcaption>Manufacturing parts for the robot</figcaption>
+      </figure>
+      <figure class="photo-card" style="--rotation:-.8deg;">
+        <span class="tape br"></span>
+        <img src="../assets/jpeg/Project_1/19.jpg" alt="Finished machined robot components">
+        <figcaption>Finished parts ready for assembly</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- CNC FAILURE AND RECOVERY -->
+
+<section class="section" id="tuning">
+  
+
+  <div class="section-content">
+    <div class="frc-fab-note">
+      <strong>2.5 weeks into the build:</strong> The CNC's X and Y axes lost
+      synchronization, causing severe positional errors and putting the
+      entire manufacturing schedule at risk.
+    </div>
+
+    <div class="year-detail">
+      <div class="copy">
+        <h3>Diagnosing the problem</h3>
+        <p>
+          During a machining operation, we discovered that the CNC's X and Y
+          axes were no longer staying synchronized. Holes and features cut
+          during the initial pass no longer lined up during the finishing
+          pass, making parts inaccurate and potentially unusable. With only
+          about a month remaining before our first competition, this was one
+          of the worst problems we could have encountered.
+        </p>
+        <p>
+          My teammate and team lead, Katherine, and I immediately began
+          investigating the machine. The first two days were spent diagnosing
+          the issue, checking the systems we could access, and trying to
+          isolate the source of the positional errors. We disassembled the
+          motor assemblies, inspected and rebuilt them, checked torque
+          specifications, and consulted a parent with professional machining
+          experience. Even after checking the components we suspected, we
+          could not identify a clear mechanical fault.
+        </p>
+        <p>
+          Over five days, using nearly every available hour outside of school,
+          we gradually brought the machine back into usable accuracy. Our
+          schedule included weekdays from 2 PM until 9 PM or later and a
+          Saturday from 8 AM to 7 PM. The machine was running again, but
+          restoring it was only half the problem.
+        </p>
+
+        <h3>Recovering the manufacturing backlog</h3>
+        <p>
+          The positional errors meant that parts manufactured during the
+          previous week could have defects. We worked with the CAD team to
+          review the robot and identify which components needed to be
+          remade. At that point, only about 80% of the robot's CAD was
+          complete, while mechanical prototyping was nearly finished and
+          urgently needed manufactured parts.
+        </p>
+        <p>
+          Katherine and I spent the next two weeks working through the
+          backlog. We worked weekdays from 2 PM until 9 PM or later and
+          Saturdays from 8 AM to 7 PM, using every available shop hour to
+          manufacture replacement components and catch up with the
+          mechanical team. During that push, we produced more than 80
+          replacement parts. We continued manufacturing through the
+          remainder of the build, reaching 375 total parts for the season.
+        </p>
+        <p>
+          Even after catching up, the machine remained a concern. We had
+          recovered production, but we still needed to keep it running
+          reliably while the robot approached completion.
+        </p>
+      </div>
+
+      <div class="paper-note" style="--rotation:1deg;">
+        <h3>The recovery effort</h3>
+        <ul>
+          <li>Identified X/Y axis synchronization errors</li>
+          <li>Disassembled and rebuilt motor assemblies</li>
+          <li>Checked mechanical components and torque specifications</li>
+          <li>Consulted an experienced machinist</li>
+          <li>Restored the CNC to usable accuracy in five days</li>
+          <li>Manufactured 80+ replacement parts over two weeks</li>
+          <li>Produced 375 total parts during the season</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MECHANICAL AND ELECTRICAL RESCUE -->
+
+<section class="section" id="leadership">
+  
+
+  <div class="section-content">
+    <div class="year-detail">
+      <div class="copy">
+        <h3>Moving from fabrication to mechanical</h3>
+        <p>
+          Once fabrication had caught up, I left the students I had trained
+          to continue manufacturing and shifted my focus with Katherine to
+          the mechanical build. The mechanical team was significantly behind
+          schedule. The chassis was unfinished, the intake had not been
+          started, the elevator was only partially assembled, the kicker
+          supports were mounted, and the turret had not yet been built.
+        </p>
+        <p>
+          We first reviewed the robot's current state and discussed build
+          methods we had learned from other teams at Worlds. Then we divided
+          the work and got started. I assembled the chassis and coordinated
+          with our lead to have the axles milled. From there, I helped build
+          the intake and assisted with the turret, while continuing to move
+          between mechanical and fabrication depending on which group needed
+          support. After many late nights, we completed the robot's
+          mechanical assembly with a week and a half remaining before our
+          first competition.
+        </p>
+
+        <h3>Learning electrical under pressure</h3>
+        <p>
+          Mechanical completion still left another major problem:
+          our electrical team had left. With the competition approaching,
+          Katherine, two rookies, and I had to take on the electrical work
+          ourselves. We learned the necessary wiring and electrical
+          procedures and worked primarily as a pair to wire the entire
+          robot. The first smoke test was nerve-racking, but the robot
+          passed on the first attempt. With one week remaining before
+          competition, we handed the robot over to programming.
+        </p>
+      </div>
+
+      <div class="paper-note" style="--rotation:-1deg;">
+        <h3>Finishing the build</h3>
+        <ul>
+          <li>Shifted from fabrication to mechanical assembly</li>
+          <li>Assembled the chassis and coordinated axle machining</li>
+          <li>Helped build the intake and turret</li>
+          <li>Continued supporting fabrication as needed</li>
+          <li>Learned electrical work with Katherine and two rookies</li>
+          <li>Wired the robot and passed the first smoke test</li>
+          <li>Delivered the robot to programming one week before competition</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="frc-gallery frc-gallery-large">
+      <figure class="photo-card" style="--rotation:-1deg;">
+        <span class="tape tl"></span><span class="tape br"></span>
+        <img src="../assets/jpeg/Project_1/18.jpg" alt="Robot chassis and mechanical assembly">
+        <figcaption>Mechanical assembly and integration</figcaption>
+      </figure>
+      <figure class="photo-card" style="--rotation:1deg;">
+        <span class="tape tr"></span><span class="tape bl"></span>
+        <img src="../assets/jpeg/Project_1/19.jpg" alt="Robot electrical wiring and final assembly">
+        <figcaption>Final wiring and robot integration</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITION RESULTS -->
+
+<section class="section" id="results">
+  
+
+  <div class="section-content">
+    
+
+    <div class="year-detail">
+      <div class="copy">
+        <h3>First competition</h3>
+        <p>
+          At our first competition, I served as Human Player, although my
+          primary responsibility was overseeing and mentoring two new pit
+          crew technicians. The role gave me the opportunity to help them
+          learn how to inspect, maintain, and troubleshoot the robot between
+          matches. We finished qualification matches ranked 7th, became
+          captain of Alliance 5, and advanced to the fourth round of playoffs.
+        </p>
+        <p>
+          Between playoff matches, one of our swerve drive gears failed and
+          became buried inside the robot. The drive was designed to be
+          disassembled from the top, but the gear was inaccessible through
+          the normal removal process. I worked through an alternate way to
+          access and replace it, completing the repair in approximately an
+          hour so we could return to the field for our next match.
+        </p>
+
+        <h3>Second competition</h3>
+        <p>
+          Between events, we made upgrades based on what we had learned
+          during our first competition and clarified rule precedents. Our
+          second event was considerably more competitive, with teams from
+          around the world, including Robotnauts. We finished qualification
+          matches ranked 14th, were selected as the first pick of Alliance 7,
+          and once again advanced to the fourth round of playoffs.
+        </p>
+      </div>
+
+      <div class="paper-note" style="--rotation:1deg;">
+        <h3>Competition highlights</h3>
+        <ul>
+          <li>Mentored two new pit crew technicians</li>
+          <li>Ranked 7th at the first competition</li>
+          <li>Captain of Alliance 5</li>
+          <li>Replaced a buried swerve drive gear in about one hour</li>
+          <li>Ranked 14th at the second competition</li>
+          <li>First pick of Alliance 7</li>
+          <li>Reached round four of playoffs at both events</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POST-SEASON HANDOFF -->
+
+<section class="section" id="handoff">
+  <div class="section-heading">
+    <div>
+      <div class="section-kicker">After competition / 05</div>
+      <h2>Leaving the team with a lasting process</h2>
+    </div>
+  </div>
+
+  <div class="section-content">
+    <div class="metric-grid">
+      <div class="metric">
+        <span>Documentation</span>
+        <strong>120+ pages</strong>
+      </div>
+      <div class="metric">
+        <span>Topics covered</span>
+        <strong>Operation · CAM · Maintenance</strong>
+      </div>
+      <div class="metric">
+        <span>Machine accuracy</span>
+        <strong>0.001 inch</strong>
+      </div>
+      <div class="metric">
+        <span>Final handoff</span>
+        <strong>New fabrication lead trained</strong>
+      </div>
+    </div>
+
+    <div class="year-detail">
+      <div class="copy">
+        <h3>Finding the root cause</h3>
+        <p>
+          After competition ended, I stayed with the team while many of the
+          other seniors moved on. Katherine and I returned to the CNC,
+          retuned the machine, and worked to make sure it was ready for the
+          next group of students. During this process, we eventually
+          identified the likely root cause of the earlier failure: the
+          generator powering the fabrication shop was producing inconsistent
+          voltage as weather conditions changed. Although our initial
+          voltage checks had appeared correct, the changing output was
+          preventing the CNC from receiving the stable power it needed to
+          maintain its accuracy.
+        </p>
+        <p>
+          I also finished the documentation I had been developing over the
+          previous three years. The final collection covered CNC operation,
+          machine tuning, maintenance, and Fusion 360 CAM, totaling more
+          than 120 pages. I trained the new fabrication lead, helped teach
+          other team leads, and stayed to finish projects that were still
+          outstanding.
+        </p>
+        <p>
+          Eventually, it was time to say goodbye and move on to my next
+          chapter. The documentation is still being used by the team, and
+          members continue to reach out with questions about the processes
+          and methods I developed. I plan to continue supporting the team
+          whenever they need help and will always be interested in following
+          their progress.
+        </p>
+      </div>
+
+      <div class="paper-note" style="--rotation:-1deg;">
+        <h3>What I left behind</h3>
+        <ul>
+          <li>More than 120 pages of CNC documentation</li>
+          <li>Machine operation and maintenance procedures</li>
+          <li>CAM and machining workflows</li>
+          <li>Retuned CNC and updated setup knowledge</li>
+          <li>Trained the next fabrication lead</li>
+          <li>Continued support for future team members</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="frc-fab-note">
+      <strong>Long-term impact:</strong> The goal was not just to finish one
+      robot. It was to leave behind a functioning shop, trained students,
+      and documented processes that the team could continue using after I
+      graduated.
+    </div>
+  </div>
+</section>
+
+
+    
+  
+
+</div></main></div></div></body></html>
