@@ -1,108 +1,459 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Engine Rebuild | Keith Flesher</title>
-  <link rel="stylesheet" href="../css/style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071019">
+<title>23 HP Kohler Engine Rebuild | Keith Flesher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#071019;--panel:rgba(8,20,31,.92);--line:rgba(138,192,220,.30);
+  --grid-small:rgba(102,177,218,.08);--grid-large:rgba(102,177,218,.14);
+  --text:#e7f3f8;--muted:#a7bdc9;--accent:#3e9fff;
+  --paper:#e8e2d2;--paper-text:#20242a;--tape:rgba(207,187,145,.76);
+  --max:1450px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  margin:0;color:var(--text);font-family:Inter,Arial,Helvetica,sans-serif;line-height:1.65;
+  background-color:var(--bg);
+  background-image:linear-gradient(var(--grid-large) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid-large) 1px,transparent 1px),
+    linear-gradient(var(--grid-small) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid-small) 1px,transparent 1px);
+  background-size:120px 120px,120px 120px,24px 24px,24px 24px;
+}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.page-shell{width:min(100% - 28px,var(--max));margin:14px auto;border:1px solid var(--line);min-height:calc(100vh - 28px);background:rgba(4,12,19,.84);overflow:hidden}
+.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:72px;padding:14px 22px;background:rgba(4,12,19,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.brand{font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.9rem}
+.brand span{color:var(--accent)}
+.nav{display:flex;flex-wrap:wrap;gap:12px}
+.nav a{font:.78rem "Courier New",monospace;color:var(--muted);padding:8px}
+.nav a:hover{color:var(--accent);background:rgba(62,159,255,.07)}
+main{min-width:0}
+.hero{display:grid;grid-template-columns:.9fr 1.35fr;gap:28px;align-items:center;padding:48px 42px 36px;min-height:560px;border-bottom:1px solid var(--line)}
+.eyebrow,.section-kicker{color:var(--accent);font:.78rem "Courier New",monospace;letter-spacing:.14em;text-transform:uppercase}
+h1{font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;text-transform:uppercase;font-weight:500;letter-spacing:.025em;line-height:.9;font-size:clamp(3.6rem,7vw,7rem);margin:1rem 0}
+.subtitle{color:var(--accent);font:1.05rem "Courier New",monospace}
+.lead{color:var(--muted);line-height:1.75}
+.meta-list{display:grid;gap:.7rem;margin-top:1.8rem}
+.meta-list div{padding-left:1rem;border-left:2px solid var(--accent);color:#c9d8df;font-size:.86rem}
+.hero-visual{min-height:390px;display:grid;place-items:center;padding:18px;border:1px solid rgba(78,164,255,.72);background:rgba(7,18,28,.72);position:relative}
+.hero-visual:before,.hero-visual:after{content:"";position:absolute;width:24px;height:24px;border-color:var(--accent);pointer-events:none}
+.hero-visual:before{top:5px;left:5px;border-top:2px solid;border-left:2px solid}
+.hero-visual:after{bottom:5px;right:5px;border-bottom:2px solid;border-right:2px solid}
+.photo-card{position:relative;min-width:0;width:100%;margin:0;padding:10px 10px 28px;background:#d7d7d2;color:#20252a;box-shadow:0 18px 45px rgba(0,0,0,.42);transform:rotate(var(--rotation,0deg))}
+.photo-card img{width:100%;aspect-ratio:var(--ratio,4/3);object-fit:cover;border:1px solid rgba(20,35,45,.25);background:linear-gradient(135deg,#162633,#27485b)}
+.photo-card figcaption{text-align:center;font:.78rem "Courier New",monospace;color:#20252a;margin-top:10px;line-height:1.45}
+.tape{display:none;position:absolute;z-index:2;width:76px;height:25px;background:linear-gradient(90deg,rgba(255,255,255,.08),transparent 16%,transparent 84%,rgba(0,0,0,.06)),var(--tape);clip-path:polygon(2% 15%,98% 0,100% 84%,0 100%);pointer-events:none}
+.photo-card.tape-tl .tape.tl,.photo-card.tape-tr .tape.tr,.photo-card.tape-bl .tape.bl,.photo-card.tape-br .tape.br{display:block}
+.tape.tl{top:-8px;left:-24px;transform:rotate(-34deg)}.tape.tr{top:-8px;right:-24px;transform:rotate(34deg)}
+.tape.bl{bottom:-7px;left:-24px;transform:rotate(31deg)}.tape.br{bottom:-7px;right:-24px;transform:rotate(-31deg)}
+.category-band{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--line)}
+.category-card{padding:22px;border-right:1px solid var(--line);background:rgba(62,159,255,.035)}
+.category-card:last-child{border-right:0}
+.category-card .tag{color:var(--accent);font:.75rem "Courier New",monospace;letter-spacing:.13em;text-transform:uppercase}
+.category-card h3,.copy h3,.paper-note h3{font-family:"Courier New",monospace;text-transform:uppercase}
+.category-card h3{margin:.5rem 0}.category-card p{margin:0;color:var(--muted);font-size:.88rem}
+.section{border-bottom:1px solid var(--line)}
+.section-heading{display:grid;grid-template-columns:64px minmax(180px,340px) minmax(0,1fr);gap:18px;align-items:center;margin:0;padding:22px 30px 18px;background:rgba(5,17,27,.72);border-bottom:1px solid var(--line)}
+.section-number{font:1.25rem "Courier New",monospace;color:var(--accent)}
+.section-heading h2{font:1.12rem "Courier New",monospace;text-transform:uppercase;letter-spacing:.045em;margin:0;padding-left:16px;border-left:6px solid var(--accent)}
+.section-heading p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.55}
+.section-content{padding:30px;display:grid;gap:24px}
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:start}
+.copy h3{font-size:1.2rem;margin:0 0 .8rem;color:var(--text)}
+.copy p{color:var(--muted);margin:.5rem 0 1rem}
+.paper-note{padding:1.5rem;background:var(--paper);color:var(--paper-text);font-family:"Patrick Hand","Segoe Print",cursive;font-size:1.08rem;box-shadow:0 18px 42px rgba(0,0,0,.28);transform:rotate(-1deg)}
+.paper-note h3{margin:0 0 .6rem;color:#1b2532}.paper-note ul{margin:.3rem 0;padding-left:1.2rem}.paper-note li{margin:.35rem 0}
+.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
+.metric{padding:1.1rem;border:1px solid var(--line);background:var(--panel)}
+.metric span{display:block;color:var(--muted);font:.7rem "Courier New",monospace;text-transform:uppercase;letter-spacing:.1em}
+.metric strong{display:block;margin-top:.4rem;font-size:1rem}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start}
+.callout{padding:1.2rem 1.4rem;border-left:3px solid var(--accent);background:rgba(62,159,255,.07);color:#c9d8df}
+.footer{padding:28px;text-align:center;color:var(--muted);font:.72rem "Courier New",monospace;letter-spacing:.12em}
+@media(max-width:900px){.hero{grid-template-columns:1fr 1fr}.section-heading{grid-template-columns:52px minmax(150px,260px) 1fr}}
+@media(max-width:720px){.page-shell{width:100%;margin:0;border-left:0;border-right:0}.topbar{align-items:flex-start;flex-direction:column}.nav{gap:4px}.hero{grid-template-columns:1fr;padding:34px 20px}.section-heading{grid-template-columns:42px 1fr;padding:18px 20px}.section-heading p{grid-column:1/-1}.section-content{padding:20px}.split,.gallery{grid-template-columns:1fr}.category-band{grid-template-columns:1fr}.category-card{border-right:0;border-bottom:1px solid var(--line)}}
+@media(max-width:500px){.metric-grid{grid-template-columns:1fr}.hero{padding:28px 16px}.section-content{padding:16px}}
+</style>
 </head>
-
 <body>
-
-<section class="project-detail">
-  <div class="project-detail__container">
-
-    <a href="../index.html#projects" class="project-detail__back">
-      ← Back to Projects
-    </a>
-
-
-<div style="position: fixed; inset: 0; z-index: 99999; background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center;">
-  <div style="background: #111; border: 3px solid #ff9800; padding: 40px; text-align: center; border-radius: 15px; max-width: 500px;">
-    <h1 style="color: #ff9800; margin: 0 0 15px;">🚧 PROJECT UNDER CONSTRUCTION 🚧</h1>
-    <p style="font-size: 18px; margin: 0;">This project is currently being developed. Check back soon for updates!</p>
-     <a href="../index.html#projects" class="project-detail__back">
-      ← Back to Projects
-  </div>
-
-
-
-
-
-    <h1>Engine Rebuild</h1>
-
-    <div class="project-detail__meta">
-      <span>Diagnostics</span>
-      <span>Troubleshooting</span>
-      <span>Mechanical Repair</span>
-      <span>Engine Rebuild</span>
-    </div>
-
-    <img src="../assets/png/your-image.png" alt="Engine rebuild project image">
-
-    <h2>Overview</h2>
-
-    <p>
-      Completed a full rebuild of a small engine, including disassembly,
-      inspection, replacement of worn components, reassembly, and troubleshooting.
-      The project required diagnosing mechanical issues, interpreting technical
-      documentation, measuring critical components, and verifying proper engine
-      operation after assembly. Throughout the rebuild, emphasis was placed on
-      understanding engine systems, mechanical tolerances, and systematic problem solving.
+<div class="page-shell" id="top">
+<header class="topbar">
+  <a class="brand" href="../index.html#projects">Keith Flesher <span>/</span> Engineering</a>
+  <nav class="nav" aria-label="Page navigation">
+    <a href="../index.html#projects">← Back to Projects</a>
+    <a href="#diagnosis">Diagnosis</a><a href="#disassembly">Disassembly</a>
+    <a href="#repair">Repair</a><a href="#timing">Timing</a><a href="#restart">Restart</a>
+  </nav>
+</header>
+<main>
+<section class="hero" id="overview">
+  <div>
+    <div class="eyebrow">Mechanical Repair / Engine Diagnostics</div>
+    <h1>Engine<br>Rebuild</h1>
+    <div class="subtitle">23 HP Kohler V-Twin / Skid-Loader Hydraulic System</div>
+    <p class="lead">
+      A complete teardown and rebuild of a seized 23 HP Kohler four-stroke engine used to power
+      a skid-loader hydraulic system. The project began with identifying the failure, then moved
+      through engine removal, internal inspection, component repair, timing, reassembly, and
+      troubleshooting the electrical system to get the engine running again.
     </p>
-
-    <h2>Challenges</h2>
-
-    <div class="project-details__content">
-
-      <h3>Diagnosing Root Causes</h3>
-      <p>
-        Identifying the original failure required inspecting the engine after
-        disassembly, checking worn or damaged components, and separating symptoms
-        from the actual mechanical causes. This included working through corrosion,
-        old hardware, and signs of overheating.
-      </p>
-
-      <h3>Reassembly and Timing</h3>
-      <p>
-        Correctly reassembling the engine required attention to component
-        orientation, timing alignment, torque specifications, and proper
-        installation procedures.
-      </p>
-
-      <h3>Troubleshooting and Testing</h3>
-      <p>
-        After assembly, additional troubleshooting and testing were required to
-        verify engine operation and identify issues that could not be observed
-        during disassembly.
-      </p>
-
+    <div class="meta-list">
+      <div><strong>ENGINE —</strong> Kohler 23 HP V-Twin</div>
+      <div><strong>APPLICATION —</strong> Skid-loader hydraulic system</div>
+      <div><strong>WORK —</strong> Diagnostics / Teardown / Repair / Rebuild</div>
+      <div><strong>KEY REPAIRS —</strong> Both pistons replaced / Cylinder walls re-honed</div>
     </div>
-
-    <h2>What I Learned</h2>
-
-    <div class="project-details__content">
-
-      <h3>Engine Systems Knowledge</h3>
-      <p>
-        Developed a deeper understanding of internal combustion engine components,
-        operation, and interactions between mechanical systems.
-      </p>
-
-      <h3>Diagnostic Problem Solving</h3>
-      <p>
-        Strengthened troubleshooting skills by systematically identifying,
-        testing, and resolving mechanical issues throughout the rebuild process.
-      </p>
-
-      <h3>Technical Documentation</h3>
-      <p>
-        Gained experience using manufacturer diagrams, torque specifications,
-        and technical references to guide accurate mechanical reassembly.
-      </p>
-
-    </div>
-
+  </div>
+  <div class="hero-visual">
+    <figure class="photo-card tape-tl tape-br" style="--rotation:-1deg;--ratio:16/10">
+      <span class="tape tl"></span><span class="tape tr"></span><span class="tape bl"></span><span class="tape br"></span>
+      <img src="../assets/jpeg/project-4.1.jpg" alt="23 horsepower Kohler engine rebuild project">
+      <figcaption>23 HP Kohler V-Twin / engine rebuild</figcaption>
+    </figure>
   </div>
 </section>
 
+<section class="category-band">
+  <article class="category-card"><div class="tag">01 / Diagnosis</div><h3>Find the Failure</h3><p>Test the engine, remove it from the machine, and investigate beyond the initial symptoms.</p></article>
+  <article class="category-card"><div class="tag">02 / Mechanical</div><h3>Repair & Rebuild</h3><p>Disassemble, inspect, replace both pistons, hone the cylinders, and restore the engine.</p></article>
+  <article class="category-card"><div class="tag">03 / Integration</div><h3>Reinstall & Run</h3><p>Resolve the timing challenge, reassemble the engine, and troubleshoot wiring during startup.</p></article>
+</section>
+
+<section class="section" id="diagnosis">
+  <div class="section-heading"><div class="section-number">01</div><h2>Discovering the Problem</h2><p>Start with the symptoms, test the engine, and determine whether the problem can be isolated without removing it.</p></div>
+  <div class="section-content">
+    <div class="split">
+      <div class="copy">
+        <h3>Initial inspection and testing</h3>
+        <p>
+          The project began with a Kohler engine that was no longer operating as it should.
+          Before taking the engine apart, I started by investigating the symptoms and testing
+          what I could while it was still installed in the skid loader.
+        </p>
+        <p>
+          The initial checks helped establish that the issue was deeper than a simple external
+          adjustment. To properly inspect the engine and reach the internal components, the next
+          step was to remove it from the machine.
+        </p>
+        <!-- Add the exact symptoms and tests you performed if you want this section to be more specific. -->
+      </div>
+      <figure class="photo-card tape-tr" style="--rotation:1deg">
+        <span class="tape tl"></span><span class="tape tr"></span><span class="tape bl"></span><span class="tape br"></span>
+        <img src="../assets/jpeg/project-4.2.jpg" alt="Initial Kohler engine inspection and testing">
+        <figcaption>Initial inspection / engine still installed in the skid loader</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="removal">
+  <div class="section-heading"><div class="section-number">02</div><h2>Engine Removal</h2><p>Gain access to the engine and prepare it for a complete inspection and rebuild.</p></div>
+  <div class="section-content">
+    <div class="split">
+      <div class="copy">
+        <h3>Removing the engine from the skid loader</h3>
+        <p>
+          Once the initial checks showed that a deeper inspection was needed, I removed the engine
+          from the skid loader. Taking the engine out made it possible to work around the entire
+          assembly and access components that could not be properly inspected while it was installed.
+        </p>
+        <p>
+          With the engine removed, I could begin separating the external systems from the engine
+          itself and prepare for a full teardown.
+        </p>
+      </div>
+      <figure class="photo-card tape-bl" style="--rotation:-1.2deg">
+        <span class="tape tl"></span><span class="tape tr"></span><span class="tape bl"></span><span class="tape br"></span>
+        <img src="../assets/jpeg/project-4.3.jpg" alt="Kohler engine being removed from the skid loader">
+        <figcaption>Engine removal / separating the engine from the machine</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="deeper-diagnosis">
+  <div class="section-heading"><div class="section-number">03</div><h2>Deeper Problem Finding</h2><p>Move from the original symptoms to a closer inspection of the engine's internal condition.</p></div>
+  <div class="section-content">
+    <div class="split">
+      <div class="copy">
+        <h3>Looking beyond the initial symptoms</h3>
+        <p>
+          With the engine on the workbench, I could investigate the problem more thoroughly.
+          I began examining the engine as a complete system instead of treating the original
+          symptom as the failure itself.
+        </p>
+        <p>
+          This meant learning how the individual components interacted, identifying what needed
+          to be inspected during disassembly, and using the engine's service information to guide
+          the inspection and rebuild.
+        </p>
+      </div>
+      <figure class="photo-card tape-tl" style="--rotation:.8deg">
+        <span class="tape tl"></span><span class="tape tr"></span><span class="tape bl"></span><span class="tape br"></span>
+        <img src="../assets/jpeg/project-4.4.jpg" alt="Closer inspection of the removed Kohler engine">
+        <figcaption>Closer inspection / identifying areas for teardown</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="disassembly">
+  <div class="section-heading"><div class="section-number">04</div><h2>Disassembly & Studying the Engine</h2><p>Take the engine apart methodically while learning the purpose and relationship of each component.</p></div>
+  <div class="section-content">
+    <div class="split">
+      <div class="copy">
+        <h3>Learning the system from the inside out</h3>
+        <p>
+          I disassembled the engine far enough to inspect the internal components, keeping track
+          of the order in which parts came apart. As I worked through the teardown, I studied what
+          each component did and how the mechanical systems worked together.
+        </p>
+        <p>
+          I used manufacturer documentation as a reference throughout the process. I also recorded
+          the assembly order, torque specifications, and tightening patterns so that the rebuild
+          could follow a repeatable procedure instead of relying on memory.
+        </p>
+      </div>
+      <figure class="photo-card tape-tr" style="--rotation:-.8deg">
+        <span class="tape tl"></span><span class="tape tr"></span><span class="tape bl"></span><span class="tape br"></span>
+        <img src="../assets/jpeg/project-4.5.jpg" alt="Kohler engine disassembly with internal components exposed">
+        <figcaption>Engine teardown / internal components exposed for inspection</figcaption>
+      </figure>
+    </div>
+    <div class="paper-note">
+      <h3>Rebuild references</h3>
+      <ul>
+        <li>Manufacturer service documentation</li>
+        <li>Recorded disassembly and assembly order</li>
+        <li>Torque specifications and tightening patterns</li>
+        <li>Component inspection and condition checks</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="failure">
+  <div class="section-heading"><div class="section-number">05</div><h2>Identifying the Internal Failure</h2><p>Inspect the piston and cylinder assemblies to determine what needed to be repaired or replaced.</p></div>
+  <div class="section-content">
+    <div class="split">
+      <div class="copy">
+        <h3>Finding the parts that needed attention</h3>
+        <p>
+          After opening the engine and inspecting the internal components, I identified the piston
+          and cylinder assemblies as the main areas requiring repair. Both pistons needed to be
+          replaced, and the cylinder walls needed to be re-honed before the engine could be rebuilt.
+        </p>
+        <p>
+          This turned the project from a general engine diagnosis into a more specific mechanical
+          repair: replace the damaged pistons, prepare the cylinder walls, and carefully rebuild
+          the engine around the inspected components.
+        </p>
+      </div>
+      <figure class="photo-card tape-br" style="--rotation:1.1deg">
+        <span class="tape tl"></span><span class="tape tr"></span><span class="tape bl"></span><span class="tape br"></span>
+        <img src="../assets/jpeg/project-4.6.jpg" alt="Pistons and cylinder walls during Kohler engine inspection">
+        <figcaption>Piston and cylinder inspection / identifying required repairs</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="repair">
+  <div class="section-heading"><div class="section-number">06</div><h2>Repairing the Engine</h2><p>Replace the pistons and prepare the cylinder walls for reassembly.</p></div>
+  <div class="section-content">
+    <div class="metric-grid">
+      <div class="metric"><span>Engine</span><strong>23 HP Kohler V-Twin</strong></div>
+      <div class="metric"><span>Replacement</span><strong>Both pistons</strong></div>
+      <div class="metric"><span>Machining / Preparation</span><strong>Re-honed cylinder walls</strong></div>
+    </div>
+    <div class="split">
+      <div class="copy">
+        <h3>Restoring the piston and cylinder assemblies</h3>
+        <p>
+          With the failure identified, I replaced both pistons and re-honed the cylinder walls.
+          This was the core mechanical repair of the rebuild. The cylinder preparation and piston
+          replacement had to be completed before moving into final assembly.
+        </p>
+        <p>
+          I also cleaned the engine components and prepared the parts for reinstallation, keeping
+          the manufacturer specifications and recorded assembly procedure available for the rebuild.
+        </p>
+      </div>
+      <figure class="photo-card tape-tl" style="--rotation:-1deg">
+        <span class="tape tl"></span><span class="tape tr"></span><span class="tape bl"></span><span class="tape br"></span>
+        <img src="../assets/jpeg/project-4.7.jpg" alt="Replacement pistons and cylinder honing during engine repair">
+        <figcaption>Piston replacement and cylinder-wall honing</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="timing">
+  <div class="section-heading"><div class="section-number">07</div><h2>Timing Gears Without Markings</h2><p>A critical reassembly challenge: the timing gears did not have visible timing marks.</p></div>
+  <div class="section-content">
+    <div class="split">
+      <div class="copy">
+        <h3>Solving the timing problem</h3>
+        <p>
+          One of the more difficult parts of the rebuild came during reassembly of the timing
+          system. The timing gears did not have visible alignment markings, which made it harder
+          to establish the correct relationship between the gears during assembly.
+        </p>
+        <p>
+          Rather than guessing at the gear position, I had to study the engine's timing arrangement
+          and use the available manufacturer information to understand how the components needed
+          to align. This was an important step because incorrect timing would prevent the engine
+          from operating properly.
+        </p>
+        <!-- Add the exact method you used to establish gear alignment if you want this technical explanation expanded. -->
+      </div>
+      <figure class="photo-card tape-tr" style="--rotation:1deg">
+        <span class="tape tl"></span><span class="tape tr"></span><span class="tape bl"></span><span class="tape br"></span>
+        <img src="../assets/jpeg/project-4.8.jpg" alt="Kohler engine timing gears during reassembly">
+        <figcaption>Timing gear assembly / no visible timing marks</figcaption>
+      </figure>
+    </div>
+    <div class="callout">
+      <strong>Key challenge:</strong> The timing gears had no visible markings. Correct alignment
+      therefore required careful reference to the engine's timing arrangement and service information,
+      rather than simply matching painted or stamped marks.
+    </div>
+  </div>
+</section>
+
+<section class="section" id="reassembly">
+  <div class="section-heading"><div class="section-number">08</div><h2>Engine Reassembly</h2><p>Rebuild the engine in the correct order and follow the documented torque specifications and patterns.</p></div>
+  <div class="section-content">
+    <div class="split">
+      <div class="copy">
+        <h3>Putting the engine back together</h3>
+        <p>
+          Once the internal repairs and timing work were complete, I began reassembling the engine.
+          I followed the manufacturer documentation and the assembly sequence I had recorded
+          during disassembly.
+        </p>
+        <p>
+          I used the specified torque values and tightening patterns during assembly. Keeping track
+          of these details was important because the rebuild depended on more than simply getting
+          every component back into place; the parts needed to be installed and tightened correctly.
+        </p>
+      </div>
+      <figure class="photo-card tape-bl" style="--rotation:-1deg">
+        <span class="tape tl"></span><span class="tape tr"></span><span class="tape bl"></span><span class="tape br"></span>
+        <img src="../assets/jpeg/project-4.9.jpg" alt="Kohler engine during final mechanical reassembly">
+        <figcaption>Engine reassembly / components installed to specification</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="restart">
+  <div class="section-heading"><div class="section-number">09</div><h2>Reinstallation & Getting It Running</h2><p>Return the rebuilt engine to the skid loader and work through the problems that appear during startup.</p></div>
+  <div class="section-content">
+    <div class="split">
+      <div class="copy">
+        <h3>Back into the machine</h3>
+        <p>
+          After the mechanical rebuild was complete, I cleaned and prepared the engine for
+          reinstallation, then returned it to the skid loader. The project moved from internal
+          engine work back to integrating the engine with the machine.
+        </p>
+        <p>
+          Getting the engine running involved more than finishing the mechanical assembly.
+          I also had to work through wiring and electrical problems during the reinstall and
+          startup process. This added another troubleshooting stage after the internal engine
+          repairs were complete.
+        </p>
+        <!-- Add the exact wiring fault, tests, and fix here; the current project notes do not specify them. -->
+      </div>
+      <figure class="photo-card tape-tl" style="--rotation:.9deg">
+        <span class="tape tl"></span><span class="tape tr"></span><span class="tape bl"></span><span class="tape br"></span>
+        <img src="../assets/jpeg/project-4.10.jpg" alt="Rebuilt Kohler engine reinstalled in the skid loader">
+        <figcaption>Engine reinstallation / connecting the engine to the skid loader</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="electrical">
+  <div class="section-heading"><div class="section-number">10</div><h2>Wiring & Final Troubleshooting</h2><p>Resolve the electrical issues that remained after the mechanical rebuild.</p></div>
+  <div class="section-content">
+    <div class="split">
+      <div class="copy">
+        <h3>Mechanical repair was only part of the job</h3>
+        <p>
+          During the final startup process, wiring problems became another obstacle. I had to
+          troubleshoot the electrical connections as part of getting the rebuilt engine operating
+          again. This required looking beyond the engine's internal mechanical condition and
+          considering the systems needed to start and run it in the skid loader.
+        </p>
+        <p>
+          The project brought together mechanical diagnosis, engine disassembly, component
+          inspection, machining preparation, timing, torque-controlled reassembly, installation,
+          and electrical troubleshooting.
+        </p>
+      </div>
+      <figure class="photo-card tape-br" style="--rotation:-.8deg">
+        <span class="tape tl"></span><span class="tape tr"></span><span class="tape bl"></span><span class="tape br"></span>
+        <img src="../assets/jpeg/project-4.11.jpg" alt="Engine wiring and final electrical troubleshooting">
+        <figcaption>Final wiring / electrical troubleshooting</figcaption>
+      </figure>
+    </div>
+    <div class="paper-note">
+      <h3>Skills demonstrated</h3>
+      <ul>
+        <li>Mechanical diagnostics and systematic teardown</li>
+        <li>Engine component inspection and identification</li>
+        <li>Piston replacement and cylinder-wall honing</li>
+        <li>Timing gear alignment and engine assembly</li>
+        <li>Manufacturer service documentation and torque procedures</li>
+        <li>Engine installation and electrical troubleshooting</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="result">
+  <div class="section-heading"><div class="section-number">11</div><h2>Project Outcome</h2><p>A complete engine rebuild that required both mechanical repair and system-level troubleshooting.</p></div>
+  <div class="section-content">
+    <div class="split">
+      <div class="copy">
+        <h3>From a failed engine to a rebuilt system</h3>
+        <p>
+          The project took the engine through a complete repair process: initial testing, removal,
+          deeper diagnosis, disassembly, internal inspection, replacement of both pistons,
+          cylinder-wall honing, timing, reassembly, reinstallation, and wiring troubleshooting.
+        </p>
+        <p>
+          Beyond the repair itself, the project required learning how an unfamiliar engine was
+          assembled and operated, using manufacturer documentation, and recording the procedures
+          needed to put it back together correctly.
+        </p>
+      </div>
+      <figure class="photo-card tape-tr" style="--rotation:1deg">
+        <span class="tape tl"></span><span class="tape tr"></span><span class="tape bl"></span><span class="tape br"></span>
+        <img src="../assets/jpeg/project-4.12.jpg" alt="Completed Kohler engine rebuild">
+        <figcaption>Completed engine rebuild / final project result</figcaption>
+      </figure>
+    </div>
+    <div class="callout">
+      <strong>Project summary:</strong> Rebuilt a 23 HP Kohler V-Twin engine for a skid-loader
+      hydraulic system, replacing both pistons, re-honing the cylinder walls, resolving the
+      unmarked timing-gear alignment challenge, and completing reassembly and electrical troubleshooting.
+    </div>
+  </div>
+</section>
+
+<footer class="footer">ENGINE REBUILD / DIAGNOSE · DISASSEMBLE · REPAIR · REASSEMBLE</footer>
+</main>
+</div>
 </body>
 </html>

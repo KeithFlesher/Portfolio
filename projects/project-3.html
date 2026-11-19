@@ -1,966 +1,359 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>FRC Robot | Keith Flesher</title>
-</head>
-<body>
-
-<link rel="stylesheet" href="../css/style.css" />
-<section class="project-detail">
-  <div class="project-detail__container">
-
-    <a href="../index.html#projects" class="project-detail__back">
-      ← Back to Projects
-    </a>
-
-   
-
-<div style="position: fixed; inset: 0; z-index: 99999; background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center;">
-  <div style="background: #111; border: 3px solid #ff9800; padding: 40px; text-align: center; border-radius: 15px; max-width: 500px;">
-    <h1 style="color: #ff9800; margin: 0 0 15px;">🚧 PROJECT UNDER CONSTRUCTION 🚧</h1>
-    <p style="font-size: 18px; margin: 0;">This project is currently being developed. Check back soon for updates!</p>
-     <a href="../index.html#projects" class="project-detail__back">
-      ← Back to Projects
-  </div>
-
-
-
-
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blueprint Engineering Portfolio</title>
-  <style>
-    :root {
-      --bg: #071019;
-      --panel: rgba(8, 20, 31, 0.88);
-      --line: rgba(138, 192, 220, 0.30);
-      --grid-small: rgba(102, 177, 218, 0.08);
-      --grid-large: rgba(102, 177, 218, 0.14);
-      --text: #e7f3f8;
-      --muted: #a7bdc9;
-      --accent: #3e9fff;
-      --paper: #e8e2d2;
-      --paper-text: #20242a;
-      --tape: rgba(207, 187, 145, 0.76);
-      --max-width: 1450px;
-    }
-
-    * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
-
-    body {
-      margin: 0;
-      color: var(--text);
-      font-family: Inter, Arial, Helvetica, sans-serif;
-      background-color: var(--bg);
-      background-image:
-        linear-gradient(var(--grid-large) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid-large) 1px, transparent 1px),
-        linear-gradient(var(--grid-small) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid-small) 1px, transparent 1px);
-      background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
-      min-height: 100vh;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .site-shell {
-      width: min(100% - 28px, var(--max-width));
-      margin: 14px auto;
-      border: 1px solid var(--line);
-      min-height: calc(100vh - 28px);
-      background: rgba(4, 12, 19, 0.72);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .site-shell::before,
-    .site-shell::after {
-      content: "";
-      position: fixed;
-      z-index: -1;
-      width: 40vw;
-      height: 40vw;
-      border-radius: 50%;
-      filter: blur(110px);
-      opacity: .13;
-      background: #2a99ff;
-    }
-
-    .site-shell::before { left: -10vw; top: -14vw; }
-    .site-shell::after { right: -12vw; bottom: -18vw; }
-
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      min-height: 72px;
-      padding: 14px 22px;
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(12px);
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(4, 12, 19, .88);
-    }
-
-    .brand {
-      font-weight: 800;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-    }
-
-    .topnav {
-      display: flex;
-      gap: 18px;
-      color: var(--muted);
-      font-size: .92rem;
-    }
-
-    .topnav a:hover { color: var(--text); }
-
-    .editor-toggle {
-      border: 1px solid var(--line);
-      background: rgba(62,159,255,.08);
-      color: var(--text);
-      padding: 9px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-
-    .page {
-      display: grid;
-      grid-template-columns: 230px minmax(0, 1fr);
-    }
-
-    .sidebar {
-      border-right: 1px solid var(--line);
-      padding: 28px 18px;
-      position: sticky;
-      top: 72px;
-      align-self: start;
-      height: calc(100vh - 72px);
-      background: rgba(5, 14, 22, .78);
-    }
-
-    .sidebar h2 {
-      margin: 0 0 22px;
-      font-size: .86rem;
-      text-transform: uppercase;
-      letter-spacing: .18em;
-      color: var(--muted);
-    }
-
-    .project-nav {
-      display: grid;
-      gap: 8px;
-      margin-bottom: 42px;
-    }
-
-    .project-nav a {
-      padding: 10px 11px;
-      border-left: 2px solid transparent;
-      color: var(--muted);
-      font-size: .92rem;
-    }
-
-    .project-nav a:hover,
-    .project-nav a.active {
-      color: var(--accent);
-      border-left-color: var(--accent);
-      background: rgba(62, 159, 255, .07);
-    }
-
-    .drawing-block {
-      margin-top: auto;
-      border: 1px solid var(--line);
-      padding: 12px;
-      font-family: "Courier New", monospace;
-      font-size: .72rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    main { min-width: 0; }
-
-    .hero {
-      display: grid;
-      grid-template-columns: .9fr 1.35fr;
-      gap: 28px;
-      padding: 48px 42px 36px;
-      min-height: 560px;
-      border-bottom: 1px solid var(--line);
-      align-items: center;
-      position: relative;
-    }
-
-    .eyebrow {
-      color: var(--accent);
-      font-family: "Courier New", monospace;
-      text-transform: uppercase;
-      letter-spacing: .14em;
-      margin-bottom: 12px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(3.1rem, 7vw, 7.5rem);
-      line-height: .85;
-      letter-spacing: .025em;
-      text-transform: uppercase;
-      font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-      font-weight: 500;
-    }
-
-    .subtitle {
-      margin: 18px 0 20px;
-      font-size: 1.25rem;
-      color: var(--accent);
-      font-family: "Courier New", monospace;
-    }
-
-    .lead {
-      color: var(--muted);
-      max-width: 62ch;
-      line-height: 1.7;
-    }
-
-    .meta {
-      margin-top: 24px;
-      display: grid;
-      gap: 7px;
-      color: #c9d8df;
-      font-size: .92rem;
-    }
-
-    .hero-visual {
-      min-height: 450px;
-      position: relative;
-      display: grid;
-      place-items: center;
-    }
-
-    .hero-visual::after {
-      content: "EXPLODED ASSEMBLY / REV D";
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      color: var(--muted);
-      font-size: .73rem;
-      font-family: "Courier New", monospace;
-      letter-spacing: .12em;
-    }
-
-    .section {
-      display: grid;
-      grid-template-columns: 170px minmax(0, 1fr);
-      border-bottom: 1px solid var(--line);
-      min-height: 420px;
-      position: relative;
-    }
-
-    .section-index {
-      padding: 32px 20px;
-      border-right: 1px solid var(--line);
-      position: relative;
-    }
-
-    .section-index .number {
-      font-size: 2.25rem;
-      color: var(--accent);
-      font-family: "Courier New", monospace;
-    }
-
-    .section-index h2 {
-      margin: 9px 0 12px;
-      font-size: 1.15rem;
-      text-transform: uppercase;
-      letter-spacing: .045em;
-      font-family: "Courier New", monospace;
-    }
-
-    .section-index p {
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: .88rem;
-    }
-
-    .flow-line {
-      position: absolute;
-      left: 83px;
-      top: 122px;
-      bottom: -1px;
-      border-left: 1px dashed rgba(255,255,255,.55);
-    }
-
-    .flow-line::after {
-      content: "⌄";
-      position: absolute;
-      bottom: -8px;
-      left: -7px;
-      color: white;
-      font-size: 1.25rem;
-    }
-
-    .section:last-of-type .flow-line { display: none; }
-
-    .section-content {
-      padding: 30px;
-      display: grid;
-      gap: 24px;
-      align-content: center;
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 24px;
-      align-items: center;
-    }
-
-    .three-col {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 20px;
-    }
-
-    .copy h3 {
-      margin: 0 0 10px;
-      font-family: "Courier New", monospace;
-      text-transform: uppercase;
-      color: var(--text);
-    }
-
-    .copy p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.75;
-    }
-
-    .paper-note {
-      background: var(--paper);
-      color: var(--paper-text);
-      padding: 18px 18px 22px;
-      box-shadow: 0 18px 42px rgba(0,0,0,.34);
-      transform: rotate(var(--rotation, -1deg));
-      position: relative;
-      font-family: "Courier New", monospace;
-    }
-
-    .paper-note h3 { margin-top: 0; }
-    .paper-note ul { margin-bottom: 0; padding-left: 1.2rem; line-height: 1.65; }
-
-    .photo-card {
-      --rotation: 0deg;
-      --scale: 1;
-      position: relative;
-      transform: rotate(var(--rotation)) scale(var(--scale));
-      transform-origin: center;
-      transition: transform .18s ease, box-shadow .18s ease;
-      background: #d7d7d2;
-      color: #20252a;
-      padding: 10px 10px 28px;
-      box-shadow: 0 18px 45px rgba(0,0,0,.42);
-      max-width: 100%;
-      isolation: isolate;
-    }
-
-    .photo-card:hover {
-      --scale: 1.015;
-      z-index: 4;
-      box-shadow: 0 28px 65px rgba(0,0,0,.54);
-    }
-
-    .photo-card img {
-      display: block;
-      width: 100%;
-      aspect-ratio: var(--ratio, 4 / 3);
-      object-fit: cover;
-      background: linear-gradient(135deg, #162633, #27485b);
-      border: 1px solid rgba(20,35,45,.25);
-    }
-
-    .photo-card figcaption {
-      margin-top: 10px;
-      text-align: center;
-      font-family: "Courier New", monospace;
-      font-size: .82rem;
-      letter-spacing: .01em;
-    }
-
-    .tape {
-      display: none;
-      position: absolute;
-      width: 76px;
-      height: 25px;
-      background:
-        linear-gradient(90deg, rgba(255,255,255,.08), transparent 16%, transparent 84%, rgba(0,0,0,.06)),
-        var(--tape);
-      box-shadow: 0 2px 5px rgba(0,0,0,.18);
-      opacity: .9;
-      z-index: 5;
-      clip-path: polygon(2% 15%, 98% 0, 100% 84%, 0 100%);
-      pointer-events: none;
-    }
-
-    .photo-card.tape-tl .tape.tl,
-    .photo-card.tape-tr .tape.tr,
-    .photo-card.tape-bl .tape.bl,
-    .photo-card.tape-br .tape.br { display: block; }
-
-    .tape.tl { top: -8px; left: -24px; transform: rotate(-34deg); }
-    .tape.tr { top: -8px; right: -24px; transform: rotate(34deg); }
-    .tape.bl { bottom: -7px; left: -24px; transform: rotate(31deg); }
-    .tape.br { bottom: -7px; right: -24px; transform: rotate(-31deg); }
-
-    .blueprint-frame {
-      border: 1px solid rgba(78, 164, 255, .72);
-      padding: 12px;
-      position: relative;
-      background: rgba(7, 18, 28, .72);
-      box-shadow: inset 0 0 0 4px rgba(62,159,255,.03);
-    }
-
-    .blueprint-frame::before,
-    .blueprint-frame::after {
-      content: "";
-      position: absolute;
-      width: 24px;
-      height: 24px;
-      border-color: var(--accent);
-    }
-
-    .blueprint-frame::before {
-      top: 5px;
-      left: 5px;
-      border-top: 2px solid;
-      border-left: 2px solid;
-    }
-
-    .blueprint-frame::after {
-      bottom: 5px;
-      right: 5px;
-      border-bottom: 2px solid;
-      border-right: 2px solid;
-    }
-
-    .iteration-strip {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
-      align-items: center;
-    }
-
-    .iteration-step { position: relative; }
-
-    .iteration-step:not(:last-child)::after {
-      content: "→";
-      position: absolute;
-      right: -16px;
-      top: 44%;
-      color: var(--text);
-      font-size: 1.65rem;
-      z-index: 10;
-    }
-
-    .callout {
-      color: var(--accent);
-      font-family: "Courier New", monospace;
-      font-size: .82rem;
-      margin-top: 10px;
-    }
-
-    .final-product {
-      display: grid;
-      grid-template-columns: 1.4fr .75fr;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .final-visual {
-      min-height: 410px;
-      display: grid;
-      place-items: center;
-      position: relative;
-    }
-
-    .spec-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .spec {
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 12px;
-    }
-
-    .spec span {
-      display: block;
-      color: var(--muted);
-      font-size: .75rem;
-      text-transform: uppercase;
-      letter-spacing: .12em;
-      margin-bottom: 3px;
-    }
-
-    .spec strong { font-size: 1.25rem; }
-
-    .footer {
-      padding: 30px;
-      color: var(--muted);
-      font-family: "Courier New", monospace;
-      border-top: 1px solid var(--line);
-      text-align: center;
-    }
-
-    /* Editor panel: lets you click an image, rotate it, and toggle tape corners. */
-    .editor-panel {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      width: 280px;
-      padding: 16px;
-      background: rgba(5, 14, 22, .96);
-      border: 1px solid rgba(62,159,255,.55);
-      box-shadow: 0 18px 55px rgba(0,0,0,.55);
-      z-index: 100;
-      display: none;
-    }
-
-    body.editor-open .editor-panel { display: block; }
-    body.editor-open .photo-card { cursor: pointer; }
-    body.editor-open .photo-card.selected { outline: 2px solid var(--accent); outline-offset: 5px; }
-
-    .editor-panel h3 {
-      margin: 0 0 12px;
-      font-family: "Courier New", monospace;
-      text-transform: uppercase;
-      font-size: .95rem;
-    }
-
-    .editor-panel label {
-      display: block;
-      margin: 10px 0 5px;
-      color: var(--muted);
-      font-size: .8rem;
-    }
-
-    .editor-panel input[type="range"] { width: 100%; }
-
-    .corner-controls {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
-      margin-top: 10px;
-    }
-
-    .corner-controls button,
-    .reset-button {
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      color: var(--text);
-      padding: 8px;
-      cursor: pointer;
-    }
-
-    .corner-controls button.active {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: rgba(62,159,255,.1);
-    }
-
-    .editor-help {
-      margin-top: 10px;
-      color: var(--muted);
-      font-size: .72rem;
-      line-height: 1.45;
-    }
-
-    @media (max-width: 1000px) {
-      .page { grid-template-columns: 1fr; }
-      .sidebar { display: none; }
-      .hero { grid-template-columns: 1fr; }
-      .section { grid-template-columns: 1fr; }
-      .section-index { border-right: 0; border-bottom: 1px solid var(--line); }
-      .flow-line { display: none; }
-      .iteration-strip { grid-template-columns: repeat(2, minmax(0,1fr)); }
-      .iteration-step::after { display: none; }
-    }
-
-    @media (max-width: 720px) {
-      .site-shell { width: 100%; margin: 0; border-left: 0; border-right: 0; }
-      .topnav { display: none; }
-      .hero { padding: 34px 20px; }
-      .section-content { padding: 20px; }
-      .split, .three-col, .final-product { grid-template-columns: 1fr; }
-      .iteration-strip { grid-template-columns: 1fr; }
-      .editor-panel { left: 10px; right: 10px; width: auto; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071019">
+<title>TorqueDrive | Keith Flesher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#071019;--panel:rgba(8,20,31,.92);--line:rgba(138,192,220,.30);
+  --grid-small:rgba(102,177,218,.08);--grid-large:rgba(102,177,218,.14);
+  --text:#e7f3f8;--muted:#a7bdc9;--accent:#3e9fff;
+  --paper:#e8e2d2;--paper-text:#20242a;--tape:rgba(207,187,145,.76);
+  --max:1450px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{
+  margin:0;color:var(--text);font-family:Inter,Arial,Helvetica,sans-serif;line-height:1.65;
+  background-color:var(--bg);
+  background-image:linear-gradient(var(--grid-large) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid-large) 1px,transparent 1px),
+    linear-gradient(var(--grid-small) 1px,transparent 1px),
+    linear-gradient(90deg,var(--grid-small) 1px,transparent 1px);
+  background-size:120px 120px,120px 120px,24px 24px,24px 24px;
+}
+a{color:inherit} img{display:block;max-width:100%}
+.page-shell{width:min(100% - 28px,var(--max));margin:14px auto;border:1px solid var(--line);min-height:calc(100vh - 28px);background:rgba(4,12,19,.84);overflow:hidden}
+.topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:72px;padding:14px 22px;background:rgba(4,12,19,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.brand{font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.9rem;text-decoration:none}
+.brand span{color:var(--accent)}
+.nav{display:flex;flex-wrap:wrap;gap:12px}
+.nav a{font: .78rem "Courier New",monospace;color:var(--muted);text-decoration:none;padding:8px}
+.nav a:hover{color:var(--accent);background:rgba(62,159,255,.07)}
+.page{display:block}
+main{min-width:0}
+.hero{display:grid;grid-template-columns:.9fr 1.35fr;gap:28px;align-items:center;padding:48px 42px 36px;min-height:560px;border-bottom:1px solid var(--line)}
+.eyebrow,.section-kicker{color:var(--accent);font:.78rem "Courier New",monospace;letter-spacing:.14em;text-transform:uppercase}
+h1{font-family:Impact,Haettenschweiler,"Arial Narrow Bold",sans-serif;text-transform:uppercase;font-weight:500;letter-spacing:.025em;line-height:.9;font-size:clamp(3.6rem,7vw,7rem);margin:1rem 0}
+.subtitle{color:var(--accent);font:1.05rem "Courier New",monospace}
+.lead{color:var(--muted);line-height:1.75}
+.meta-list{display:grid;gap:.7rem;margin-top:1.8rem}
+.meta-list div{padding-left:1rem;border-left:2px solid var(--accent);color:#c9d8df;font-size:.86rem}
+.hero-visual{min-height:390px;display:grid;place-items:center;padding:18px;border:1px solid rgba(78,164,255,.72);background:rgba(7,18,28,.72);position:relative}
+.hero-visual:before,.hero-visual:after{content:"";position:absolute;width:24px;height:24px;border-color:var(--accent);pointer-events:none}
+.hero-visual:before{top:5px;left:5px;border-top:2px solid;border-left:2px solid}
+.hero-visual:after{bottom:5px;right:5px;border-bottom:2px solid;border-right:2px solid}
+.photo-card{position:relative;min-width:0;width:100%;margin:0;padding:10px 10px 28px;background:#d7d7d2;color:#20252a;box-shadow:0 18px 45px rgba(0,0,0,.42);transform:rotate(var(--rotation,0deg));isolation:isolate}
+.photo-card img{width:100%;aspect-ratio:var(--ratio,4/3);object-fit:cover;border:1px solid rgba(20,35,45,.25);background:linear-gradient(135deg,#162633,#27485b)}
+.photo-card figcaption{text-align:center;font:.78rem "Courier New",monospace;color:#20252a;margin-top:10px;line-height:1.45}
+.tape{display:none;position:absolute;z-index:2;width:76px;height:25px;background:linear-gradient(90deg,rgba(255,255,255,.08),transparent 16%,transparent 84%,rgba(0,0,0,.06)),var(--tape);clip-path:polygon(2% 15%,98% 0,100% 84%,0 100%);pointer-events:none}
+.photo-card.tape-tl .tape.tl,.photo-card.tape-tr .tape.tr,.photo-card.tape-bl .tape.bl,.photo-card.tape-br .tape.br{display:block}
+.tape.tl{top:-8px;left:-24px;transform:rotate(-34deg)}.tape.tr{top:-8px;right:-24px;transform:rotate(34deg)}
+.tape.bl{bottom:-7px;left:-24px;transform:rotate(31deg)}.tape.br{bottom:-7px;right:-24px;transform:rotate(-31deg)}
+.category-band{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-bottom:1px solid var(--line)}
+.category-card{padding:22px;border-right:1px solid var(--line);background:rgba(62,159,255,.035)}
+.category-card:last-child{border-right:0}
+.category-card .tag{color:var(--accent);font:.75rem "Courier New",monospace;letter-spacing:.13em;text-transform:uppercase}
+.category-card h3,.copy h3,.paper-note h3{font-family:"Courier New",monospace;text-transform:uppercase}
+.category-card h3{margin:.5rem 0}
+.category-card p{margin:0;color:var(--muted);font-size:.88rem}
+.section{border-bottom:1px solid var(--line)}
+.section-heading{display:grid;grid-template-columns:64px minmax(180px,300px) minmax(0,1fr);gap:18px;align-items:center;margin:0;padding:22px 30px 18px;background:rgba(5,17,27,.72);border-bottom:1px solid var(--line)}
+.section-number{font:1.25rem "Courier New",monospace;color:var(--accent)}
+.section-heading h2{font:1.12rem "Courier New",monospace;text-transform:uppercase;letter-spacing:.045em;margin:0;padding-left:16px;border-left:6px solid var(--accent)}
+.section-heading p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.55}
+.section-content{padding:30px;display:grid;gap:24px}
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:start}
+.copy h3{font-size:1.2rem;margin:0 0 .8rem;color:var(--text)}
+.copy p{color:var(--muted);margin:.5rem 0 1rem}
+.paper-note{padding:1.5rem;background:var(--paper);color:var(--paper-text);font-family:"Patrick Hand","Segoe Print",cursive;font-size:1.08rem;box-shadow:0 18px 42px rgba(0,0,0,.28);transform:rotate(-1deg)}
+.paper-note h3{margin:0 0 .6rem;color:#1b2532}
+.paper-note ul{margin:.3rem 0;padding-left:1.2rem}
+.paper-note li{margin:.35rem 0}
+.process-list{display:grid;gap:.7rem}
+.process-step{padding:1rem;border:1px solid var(--line);background:var(--panel)}
+.process-step strong{display:block;color:var(--accent);font:.75rem "Courier New",monospace;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.3rem}
+.process-step span{color:var(--muted);font-size:.87rem}
+.metric-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
+.metric{padding:1.1rem;border:1px solid var(--line);background:var(--panel)}
+.metric span{display:block;color:var(--muted);font:.7rem "Courier New",monospace;text-transform:uppercase;letter-spacing:.1em}
+.metric strong{display:block;margin-top:.4rem;font-size:1rem}
+.gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start}
+.gallery .photo-card{width:100%}
+.callout{padding:1.2rem 1.4rem;border-left:3px solid var(--accent);background:rgba(62,159,255,.07);color:#c9d8df}
+.final-panel{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center;padding:26px;border:1px solid rgba(62,159,255,.5);background:rgba(62,159,255,.045)}
+.final-panel h3{font:1.35rem "Courier New",monospace;color:var(--accent);margin:.3rem 0 .8rem}
+.final-panel p{color:var(--muted)}
+.footer{padding:28px;text-align:center;color:var(--muted);font:.72rem "Courier New",monospace;letter-spacing:.12em}
+@media(max-width:1000px){.hero{grid-template-columns:1fr 1fr}.section-heading{grid-template-columns:52px minmax(150px,230px) 1fr}}
+@media(max-width:720px){.topbar{align-items:flex-start;flex-direction:column}.nav{gap:4px}.hero{grid-template-columns:1fr;padding:34px 20px}.section-heading{grid-template-columns:42px 1fr;padding:18px 20px}.section-heading p{grid-column:1/-1}.section-content{padding:20px}.split,.gallery,.final-panel{grid-template-columns:1fr}.category-band{grid-template-columns:1fr}.category-card{border-right:0;border-bottom:1px solid var(--line)}}
+@media(max-width:500px){.metric-grid{grid-template-columns:1fr}.hero{padding:28px 16px}.section-content{padding:16px}.photo-card{max-width:100%}}
+</style>
 </head>
 <body>
-  <div class="site-shell">
-    <header class="topbar">
-      <a href="#top" class="brand">Keith Flesher / Engineering</a>
-      <nav class="topnav">
-        <a href="#challenge">Challenge</a>
-        <a href="#design">Design</a>
-        <a href="#manufacturing">Manufacturing</a>
-        <a href="#testing">Testing</a>
-        <a href="#final">Final</a>
-      </nav>
-      
-    </header>
+<div class="page-shell" id="top">
+<header class="topbar">
+  <a class="brand" href="../index.html#projects">Keith Flesher <span>/</span> Engineering</a>
+  <nav class="nav" aria-label="Page navigation">
+    <a href="../index.html#projects">← Back to Projects</a>
+    <a href="#process">Design Process</a>
+    <a href="#prototype">Prototype</a>
+    <a href="#testing">Testing</a>
+    <a href="#presentation">Presentation</a>
+  </nav>
+</header>
 
-    <div class="page" id="top">
-      <aside class="sidebar">
-        <h2>Projects</h2>
-        <nav class="project-nav">
-          <a class="active" href="#top">01 TorqueDrive</a>
-          <a href="#">02 FRC Robot</a>
-          <a href="#">03 CNC Rebuild</a>
-          <a href="#">04 Engine Build</a>
-          <a href="#">05 Helmet</a>
-        </nav>
+<div class="page">
 
-        <div class="drawing-block">
-          PROJECT: TORQUEDRIVE<br />
-          DRAWING: PORTFOLIO-01<br />
-          REV: D<br />
-          SCALE: NTS<br />
-          STATUS: FINAL
-        </div>
-      </aside>
 
-      <main>
-        <section class="hero">
-          <div>
-            <div class="eyebrow">Mechanical Design Case Study</div>
-            <h1>Torque<br />Drive</h1>
-            <div class="subtitle">High-torque fastening support tool</div>
-            <p class="lead">
-              Replace this with a sharp project summary: what problem existed, what you built,
-              what you personally owned, and what measurable result you achieved.
-            </p>
-            <div class="meta">
-              <div>DATE / 2026</div>
-              <div>ROLE / LEAD DESIGNER + FABRICATION</div>
-              <div>TOOLS / FUSION 360, CNC, 3D PRINTING, TESTING</div>
-            </div>
-          </div>
-
-          <div class="hero-visual blueprint-frame">
-            <!-- Replace the src with your image. data-rotate sets the default angle. -->
-            <figure class="photo-card tape-tl tape-br" data-rotate="-1.5" style="--rotation:-1.5deg; width:min(92%,760px); --ratio:16/10;">
-              <span class="tape tl"></span><span class="tape tr"></span>
-              <span class="tape bl"></span><span class="tape br"></span>
-              <img src="images/hero-exploded-view.jpg" alt="Exploded assembly hero image" />
-              <figcaption>Exploded assembly / annotated hero image</figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <section class="section" id="challenge">
-          <div class="section-index">
-            <div class="number">01</div>
-            <h2>The Challenge</h2>
-            <p>Set the engineering problem, constraints, and success criteria.</p>
-            <div class="flow-line"></div>
-          </div>
-
-          <div class="section-content">
-            <div class="split">
-              <div class="copy">
-                <h3>Problem statement</h3>
-                <p>
-                  Explain the failure or inefficiency you discovered. Keep this focused on the
-                  user, environment, loads, limitations, and why existing solutions were not good enough.
-                </p>
-              </div>
-
-              <div class="split">
-                <figure class="photo-card tape-tr" data-rotate="2.2" style="--rotation:2.2deg;">
-                  <span class="tape tl"></span><span class="tape tr"></span>
-                  <span class="tape bl"></span><span class="tape br"></span>
-                  <img src="images/problem-sketch.jpg" alt="Early engineering sketch" />
-                  <figcaption>Early sketch + requirements</figcaption>
-                </figure>
-
-                <div class="paper-note" style="--rotation:-2deg;">
-                  <h3>Key requirements</h3>
-                  <ul>
-                    <li>Hold target torque safely</li>
-                    <li>Compact and easy to use</li>
-                    <li>Manufacturable with available tools</li>
-                    <li>Serviceable and repeatable</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section" id="design">
-          <div class="section-index">
-            <div class="number">02</div>
-            <h2>Design Evolution</h2>
-            <p>Show the project as an exploded sequence of decisions and revisions.</p>
-            <div class="flow-line"></div>
-          </div>
-
-          <div class="section-content">
-            <div class="iteration-strip">
-              <div class="iteration-step">
-                <figure class="photo-card tape-tl" data-rotate="-2" style="--rotation:-2deg;">
-                  <span class="tape tl"></span><span class="tape tr"></span>
-                  <span class="tape bl"></span><span class="tape br"></span>
-                  <img src="images/version-1.jpg" alt="Version one" />
-                  <figcaption>V1 — first working geometry</figcaption>
-                </figure>
-                <div class="callout">Too large / poor access</div>
-              </div>
-
-              <div class="iteration-step">
-                <figure class="photo-card tape-br" data-rotate="1.1" style="--rotation:1.1deg;">
-                  <span class="tape tl"></span><span class="tape tr"></span>
-                  <span class="tape bl"></span><span class="tape br"></span>
-                  <img src="images/version-2.jpg" alt="Version two" />
-                  <figcaption>V2 — reduced footprint</figcaption>
-                </figure>
-                <div class="callout">Alignment issue found</div>
-              </div>
-
-              <div class="iteration-step">
-                <figure class="photo-card" data-rotate="-0.8" style="--rotation:-0.8deg;">
-                  <span class="tape tl"></span><span class="tape tr"></span>
-                  <span class="tape bl"></span><span class="tape br"></span>
-                  <img src="images/version-3.jpg" alt="Version three" />
-                  <figcaption>V3 — reinforced geometry</figcaption>
-                </figure>
-                <div class="callout">Strength improved</div>
-              </div>
-
-              <div class="iteration-step blueprint-frame">
-                <figure class="photo-card tape-tr tape-bl" data-rotate="0" style="--rotation:0deg;">
-                  <span class="tape tl"></span><span class="tape tr"></span>
-                  <span class="tape bl"></span><span class="tape br"></span>
-                  <img src="images/version-final.jpg" alt="Final version" />
-                  <figcaption>V4 — final design</figcaption>
-                </figure>
-                <div class="callout">Final architecture</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section" id="manufacturing">
-          <div class="section-index">
-            <div class="number">03</div>
-            <h2>Manufacturing</h2>
-            <p>Connect CAD decisions to tooling, setup, material, and process.</p>
-            <div class="flow-line"></div>
-          </div>
-
-          <div class="section-content">
-            <div class="three-col">
-              <figure class="photo-card tape-tl tape-br" data-rotate="-1.8" style="--rotation:-1.8deg;">
-                <span class="tape tl"></span><span class="tape tr"></span>
-                <span class="tape bl"></span><span class="tape br"></span>
-                <img src="images/cnc-machining.jpg" alt="CNC machining" />
-                <figcaption>CNC machining setup</figcaption>
-              </figure>
-
-              <figure class="photo-card tape-tr" data-rotate="1.4" style="--rotation:1.4deg;">
-                <span class="tape tl"></span><span class="tape tr"></span>
-                <span class="tape bl"></span><span class="tape br"></span>
-                <img src="images/cam-toolpath.jpg" alt="CAM toolpath" />
-                <figcaption>CAM strategy + toolpaths</figcaption>
-              </figure>
-
-              <figure class="photo-card tape-bl" data-rotate="-0.7" style="--rotation:-0.7deg;">
-                <span class="tape tl"></span><span class="tape tr"></span>
-                <span class="tape bl"></span><span class="tape br"></span>
-                <img src="images/parts-layout.jpg" alt="Finished parts" />
-                <figcaption>Finished parts before assembly</figcaption>
-              </figure>
-            </div>
-          </div>
-        </section>
-
-        <section class="section" id="testing">
-          <div class="section-index">
-            <div class="number">04</div>
-            <h2>Testing + Iteration</h2>
-            <p>Show measurable proof, failures, and exactly how the design changed.</p>
-            <div class="flow-line"></div>
-          </div>
-
-          <div class="section-content">
-            <div class="three-col">
-              <figure class="photo-card tape-tl" data-rotate="-1.5" style="--rotation:-1.5deg;">
-                <span class="tape tl"></span><span class="tape tr"></span>
-                <span class="tape bl"></span><span class="tape br"></span>
-                <img src="images/test-graph.jpg" alt="Test graph" />
-                <figcaption>Measured performance</figcaption>
-              </figure>
-
-              <figure class="photo-card tape-tr tape-bl" data-rotate="1" style="--rotation:1deg;">
-                <span class="tape tl"></span><span class="tape tr"></span>
-                <span class="tape bl"></span><span class="tape br"></span>
-                <img src="images/load-test.jpg" alt="Load testing" />
-                <figcaption>Full-load validation</figcaption>
-              </figure>
-
-              <div class="paper-note" style="--rotation:1.5deg;">
-                <h3>Failure → fix</h3>
-                <p><strong>Failure:</strong> Explain what broke or performed poorly.</p>
-                <p><strong>Root cause:</strong> State what the evidence showed.</p>
-                <p><strong>Change:</strong> Show the geometry, material, or process revision.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="section" id="final">
-          <div class="section-index">
-            <div class="number">05</div>
-            <h2>Final Product</h2>
-            <p>Finish with the resolved assembly, measured result, and what you learned.</p>
-          </div>
-
-          <div class="section-content">
-            <div class="final-product">
-              <div class="final-visual blueprint-frame">
-                <figure class="photo-card tape-tl tape-tr" data-rotate="-0.5" style="--rotation:-0.5deg; width:min(92%,780px); --ratio:16/10;">
-                  <span class="tape tl"></span><span class="tape tr"></span>
-                  <span class="tape bl"></span><span class="tape br"></span>
-                  <img src="images/final-product.jpg" alt="Final product" />
-                  <figcaption>Final assembly</figcaption>
-                </figure>
-              </div>
-
-              <div>
-                <div class="spec-list">
-                  <div class="spec"><span>Max tested torque</span><strong>95 N·m</strong></div>
-                  <div class="spec"><span>Mass</span><strong>6.72 lb</strong></div>
-                  <div class="spec"><span>Primary material</span><strong>7075-T6 Aluminum</strong></div>
-                  <div class="spec"><span>Status</span><strong>Validated Prototype</strong></div>
-                </div>
-
-                <div class="paper-note" style="--rotation:-1.2deg; margin-top:24px;">
-                  <h3>Lessons learned</h3>
-                  <p>
-                    Write three compact lessons: one about engineering judgment, one about manufacturing,
-                    and one about testing or project leadership.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <footer class="footer">DESIGN IS HOW IT WORKS / PORTFOLIO DRAWING 01</footer>
-      </main>
+<main>
+<section class="hero" id="overview">
+  <div>
+    <div class="eyebrow">Product Development / Engineering Case Study</div>
+    <h1>Torque<br>Drive</h1>
+    <div class="subtitle">One-hand torque-assist socket adapter</div>
+    <p class="lead">
+      TorqueDrive is a one-hand torque-assist socket adapter developed through the engineering design process.
+      The project moved from problem definition and concept development into CAD, physical prototyping,
+      testing, and product iteration. The prototype was tested to approximately 50 ft-lb.
+    </p>
+    <div class="meta-list">
+      <div><strong>PROJECT —</strong> TorqueDrive Socket Adapter</div>
+      <div><strong>PROCESS —</strong> Define · Develop · Design · Build · Evaluate · Present</div>
+      <div><strong>PROTOTYPE —</strong> 3D-printed mechanism</div>
+      <div><strong>TEST RESULT —</strong> Approximately 50 ft-lb</div>
     </div>
   </div>
+  <div class="hero-visual">
+    <figure class="photo-card tape-tl tape-br" style="--rotation:-1deg;--ratio:16/10">
+      <span class="tape tl"></span><span class="tape tr"></span><span class="tape bl"></span><span class="tape br"></span>
+      <img src="../assets/jpeg/project-3.1.jpg" alt="TorqueDrive socket adapter project overview">
+      <figcaption>TorqueDrive Socket Adapter / project overview</figcaption>
+    </figure>
+  </div>
+</section>
 
-  <aside class="editor-panel" id="editorPanel" aria-live="polite">
-    <h3>Photo editor</h3>
-    <div id="selectionStatus">Click any photo card.</div>
+<section class="category-band">
+  <article class="category-card"><div class="tag">01 / Engineering</div><h3>Problem to Product</h3><p>A structured design process from the initial problem through a physical prototype.</p></article>
+  <article class="category-card"><div class="tag">02 / Development</div><h3>CAD & Prototyping</h3><p>Digital design translated into a 3D-printed mechanism for hands-on evaluation.</p></article>
+  <article class="category-card"><div class="tag">03 / Validation</div><h3>Testing & Communication</h3><p>Prototype testing followed by a presentation to regional industry and business leaders.</p></article>
+</section>
 
-    <label for="rotationRange">Rotation: <span id="rotationValue">0°</span></label>
-    <input type="range" id="rotationRange" min="-12" max="12" step="0.1" value="0" />
-
-    <label>Tape corners</label>
-    <div class="corner-controls">
-      <button type="button" data-corner="tl">Top left</button>
-      <button type="button" data-corner="tr">Top right</button>
-      <button type="button" data-corner="bl">Bottom left</button>
-      <button type="button" data-corner="br">Bottom right</button>
+<section class="section" id="define">
+  <div class="section-heading"><div class="section-number">01</div><h2>Define the Problem</h2><p>Identify the need the product is intended to address and establish what the solution must accomplish.</p></div>
+  <div class="section-content">
+    <div class="split">
+      <div class="copy">
+        <h3>Starting with the problem</h3>
+        <p>
+          The first stage was defining the problem before committing to a design. TorqueDrive was developed
+          as a one-hand torque-assist socket adapter. The goal was to create a practical mechanical tool
+          that could provide torque assistance while remaining usable as a socket adapter.
+        </p>
+        <p>
+          <!-- ADD YOUR ORIGINAL PROBLEM STATEMENT HERE: describe the exact task, user, and limitation you observed. -->
+          The specific use case, initial constraints, and measurable design requirements should be added here
+          from the original project notes.
+        </p>
+      </div>
+      <figure class="photo-card tape-tr" style="--rotation:1.2deg">
+        <span class="tape tl"></span><span class="tape tr"></span><span class="tape bl"></span><span class="tape br"></span>
+        <!-- Replace with a photo of the original problem, sketch, or requirements notes. -->
+        <img src="../assets/jpeg/TorqueDrive/01-problem-definition.jpg" alt="TorqueDrive initial problem definition or project sketch">
+        <figcaption>Initial problem definition / replace with original project evidence</figcaption>
+      </figure>
     </div>
-
-    <button type="button" class="reset-button" id="resetPhoto" style="width:100%; margin-top:10px;">Reset selected photo</button>
-    <div class="editor-help">
-      This editor changes the page live. To make changes permanent, copy the selected card's rotation value
-      and tape classes into your HTML.
+    <div class="paper-note">
+      <h3>Design brief / confirm from project notes</h3>
+      <ul>
+        <li>Develop a one-hand torque-assist socket adapter</li>
+        <li>Translate the concept into a physical mechanism</li>
+        <li>Evaluate the design through prototype testing</li>
+        <li>Document the final design and communicate the result</li>
+      </ul>
     </div>
-  </aside>
+  </div>
+</section>
 
-  <script>
-    const body = document.body;
-    const editorToggle = document.getElementById('editorToggle');
-    const rotationRange = document.getElementById('rotationRange');
-    const rotationValue = document.getElementById('rotationValue');
-    const selectionStatus = document.getElementById('selectionStatus');
-    const cornerButtons = [...document.querySelectorAll('[data-corner]')];
-    const resetPhoto = document.getElementById('resetPhoto');
-    const photoCards = [...document.querySelectorAll('.photo-card')];
+<section class="section" id="concepts">
+  <div class="section-heading"><div class="section-number">02</div><h2>Generate Concepts</h2><p>Explore possible mechanisms and compare approaches before committing to a design direction.</p></div>
+  <div class="section-content">
+    <div class="split">
+      <div class="copy">
+        <h3>Exploring possible solutions</h3>
+        <p>
+          With the problem defined, the next stage was generating and considering possible concepts
+          for the adapter. This stage is where alternative layouts and mechanisms can be compared
+          before investing time in a detailed CAD model.
+        </p>
+        <p>
+          <!-- ADD CONCEPT DETAILS: describe the concepts you actually considered and why you selected the final one. -->
+          Add the original concept sketches, alternatives, and selection reasoning here. Avoid listing
+          concepts that were not part of the project.
+        </p>
+      </div>
+      <figure class="photo-card tape-bl" style="--rotation:-1.3deg">
+        <span class="tape tl"></span><span class="tape tr"></span><span class="tape bl"></span><span class="tape br"></span>
+        <!-- Replace with concept sketches or a comparison image. -->
+        <img src="../assets/jpeg/TorqueDrive/02-concept-development.jpg" alt="TorqueDrive concept sketches and alternative designs">
+        <figcaption>Concept generation / replace with sketches or comparison</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
 
-    let selectedCard = null;
+<section class="section" id="design">
+  <div class="section-heading"><div class="section-number">03</div><h2>Design the Solution</h2><p>Develop the selected concept into a detailed design that can be prototyped and evaluated.</p></div>
+  <div class="section-content">
+    <div class="split">
+      <div class="copy">
+        <h3>Turning the concept into CAD</h3>
+        <p>
+          After selecting a design direction, the mechanism was developed in CAD. The digital model
+          provided a way to define the geometry and assemble the design before producing a physical
+          prototype.
+        </p>
+        <p>
+          <!-- ADD CAD DETAILS: software, key components, dimensions, material decisions, constraints, and design changes. -->
+          Add the specific CAD decisions and revisions you made, including any important geometry or
+          fit considerations that shaped the final design.
+        </p>
+      </div>
+      <figure class="photo-card tape-tl" style="--rotation:.8deg">
+        <span class="tape tl"></span><span class="tape tr"></span><span class="tape bl"></span><span class="tape br"></span>
+        <!-- Replace with CAD screenshot, drawing, or exploded view. -->
+        <img src="../assets/jpeg/TorqueDrive/03-cad-design.jpg" alt="TorqueDrive CAD model or engineering drawing">
+        <figcaption>CAD development / replace with model or drawing</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
 
-    editorToggle.addEventListener('click', () => {
-      body.classList.toggle('editor-open');
-      editorToggle.textContent = body.classList.contains('editor-open') ? 'Close editor' : 'Edit photos';
-    });
+<section class="section" id="prototype">
+  <div class="section-heading"><div class="section-number">04</div><h2>Build and Test</h2><p>Move from the digital model to a physical prototype and evaluate how the mechanism performs.</p></div>
+  <div class="section-content">
+    <div class="split">
+      <div class="copy">
+        <h3>Building a working prototype</h3>
+        <p>
+          The design was turned into a physical prototype using a 3D-printed mechanism. Prototyping
+          made it possible to handle the assembly, check how the parts interacted, and move beyond
+          evaluating the design only on a screen.
+        </p>
+        <p>
+          <!-- ADD BUILD DETAILS: printer/material, assembly method, hardware, print iterations, and issues encountered. -->
+          Add the actual print material, manufacturing settings, assembly details, and any problems
+          discovered during the first build.
+        </p>
+      </div>
+      <figure class="photo-card tape-tr" style="--rotation:1deg">
+        <span class="tape tl"></span><span class="tape tr"></span><span class="tape bl"></span><span class="tape br"></span>
+        <!-- Replace with prototype/printing/assembly photo. -->
+        <img src="../assets/jpeg/TorqueDrive/04-prototype-build.jpg" alt="3D-printed TorqueDrive prototype during assembly">
+        <figcaption>3D-printed prototype / build and assembly</figcaption>
+      </figure>
+    </div>
+    <div class="callout"><strong>Prototype type:</strong> 3D-printed mechanism. The prototype was developed for physical evaluation rather than relying on CAD alone.</div>
+  </div>
+</section>
 
-    function selectCard(card) {
-      photoCards.forEach(item => item.classList.remove('selected'));
-      selectedCard = card;
-      selectedCard.classList.add('selected');
+<section class="section" id="evaluate">
+  <div class="section-heading"><div class="section-number">05</div><h2>Evaluate the Solution</h2><p>Test the prototype, observe its performance, and use the results to guide product iteration.</p></div>
+  <div class="section-content">
+    <div class="metric-grid">
+      <div class="metric"><span>Product</span><strong>TorqueDrive Socket Adapter</strong></div>
+      <div class="metric"><span>Prototype</span><strong>3D-Printed Mechanism</strong></div>
+      <div class="metric"><span>Reported Test Level</span><strong>~50 ft-lb</strong></div>
+    </div>
+    <div class="split">
+      <div class="copy">
+        <h3>Testing the mechanism</h3>
+        <p>
+          The prototype was tested to approximately 50 ft-lb. This provided a practical performance
+          checkpoint for the design and helped evaluate the mechanism under applied torque.
+        </p>
+        <p>
+          <!-- ADD TEST METHOD: describe the test setup, tool/instrument, number of trials, failure mode, and what changed afterward. -->
+          Add the exact test procedure, observations, limitations, and design changes made after testing.
+          The 50 ft-lb figure should be described as the tested level, not as a certified rating unless
+          the project documentation supports that claim.
+        </p>
+      </div>
+      <figure class="photo-card tape-br" style="--rotation:-.8deg">
+        <span class="tape tl"></span><span class="tape tr"></span><span class="tape bl"></span><span class="tape br"></span>
+        <!-- Replace with a photo of the test setup or prototype under load. -->
+        <img src="../assets/jpeg/TorqueDrive/05-testing.jpg" alt="TorqueDrive prototype during torque testing">
+        <figcaption>Prototype testing / replace with test setup or results</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
 
-      const current = parseFloat(selectedCard.dataset.rotate || '0');
-      rotationRange.value = current;
-      rotationValue.textContent = `${current.toFixed(1)}°`;
-      selectionStatus.textContent = selectedCard.querySelector('figcaption')?.textContent || 'Selected photo';
-      updateCornerButtons();
-    }
+<section class="section" id="present">
+  <div class="section-heading"><div class="section-number">06</div><h2>Present the Solution</h2><p>Bring the engineering work together into a clear explanation of the problem, design, prototype, and results.</p></div>
+  <div class="section-content">
+    <div class="split">
+      <div class="copy">
+        <h3>Communicating the engineering work</h3>
+        <p>
+          The final stage was communicating the project beyond the design and build process. The
+          TorqueDrive Socket Adapter was presented to industry professionals and regional business
+          leaders as part of a senior capstone engineering project.
+        </p>
+        <p>
+          The presentation connected the original problem to the design process, physical prototype,
+          testing, and product development work completed throughout the project.
+        </p>
+      </div>
+      <figure class="photo-card tape-tl" style="--rotation:1deg">
+        <span class="tape tl"></span><span class="tape tr"></span><span class="tape bl"></span><span class="tape br"></span>
+        <!-- Replace with a photo of the final presentation board, slide, or project display. -->
+        <img src="../assets/jpeg/TorqueDrive/06-final-presentation.jpg" alt="TorqueDrive final capstone presentation display">
+        <figcaption>Final project presentation / display</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
 
-    photoCards.forEach(card => {
-      card.addEventListener('click', event => {
-        if (!body.classList.contains('editor-open')) return;
-        event.preventDefault();
-        event.stopPropagation();
-        selectCard(card);
-      });
-    });
+<section class="section" id="presentation">
+  <div class="section-heading"><div class="section-number">07</div><h2>Chamber of Commerce Presentation</h2><p>Presenting the completed capstone project to a regional industry audience.</p></div>
+  <div class="section-content">
+    <div class="final-panel">
+      <div>
+        <div class="section-kicker">Industry Presentation / Capstone Recognition</div>
+        <h3>Colorado Springs Chamber & EDC</h3>
+        <p>
+          TorqueDrive was presented to industry professionals and regional business leaders through
+          the Pikes Peak regional industry capstone program. The project received formal recognition
+          from the Colorado Springs Chamber & EDC and the regional industry panel.
+        </p>
+        <p>
+          This was an opportunity to explain the engineering decisions behind the product, demonstrate
+          the prototype, and communicate the development process to an audience outside the classroom.
+        </p>
+      </div>
+      <figure class="photo-card tape-tr" style="--rotation:-1deg;--ratio:4/3">
+        <span class="tape tl"></span><span class="tape tr"></span><span class="tape bl"></span><span class="tape br"></span>
+        <img src="../assets/jpeg/project000-4.1.jpg" alt="TorqueDrive capstone presentation and regional industry recognition">
+        <figcaption>TorqueDrive / Pikes Peak regional industry capstone presentation</figcaption>
+      </figure>
+    </div>
+    <div class="callout">
+      <strong>Project outcome:</strong> A one-hand torque-assist socket adapter developed through problem
+      definition, concept development, CAD, 3D-printed prototyping, testing to approximately 50 ft-lb,
+      and presentation to regional industry leaders.
+    </div>
+  </div>
+</section>
 
-    rotationRange.addEventListener('input', () => {
-      if (!selectedCard) return;
-      const value = parseFloat(rotationRange.value);
-      selectedCard.dataset.rotate = value;
-      selectedCard.style.setProperty('--rotation', `${value}deg`);
-      rotationValue.textContent = `${value.toFixed(1)}°`;
-    });
-
-    cornerButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        if (!selectedCard) return;
-        const corner = button.dataset.corner;
-        selectedCard.classList.toggle(`tape-${corner}`);
-        updateCornerButtons();
-      });
-    });
-
-    function updateCornerButtons() {
-      cornerButtons.forEach(button => {
-        const corner = button.dataset.corner;
-        button.classList.toggle('active', !!selectedCard?.classList.contains(`tape-${corner}`));
-      });
-    }
-
-    resetPhoto.addEventListener('click', () => {
-      if (!selectedCard) return;
-      selectedCard.dataset.rotate = '0';
-      selectedCard.style.setProperty('--rotation', '0deg');
-      ['tl','tr','bl','br'].forEach(corner => selectedCard.classList.remove(`tape-${corner}`));
-      rotationRange.value = 0;
-      rotationValue.textContent = '0.0°';
-      updateCornerButtons();
-    });
-  </script>
+<footer class="footer">TORQUEDRIVE / ENGINEERING PORTFOLIO / DESIGN · BUILD · TEST</footer>
+</main>
+</div>
+</div>
 </body>
 </html>
